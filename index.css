@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: cursive;
+color: white;
+}
+
+
+
+
+
+
+
+
+
+/* Header/logo Title */
+.header {
+  padding: 10px;
+  text-align: left;
+  background: #1abc9c00;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  margin-left: 50PX;
+  margin-right: 50PX;
+}
+
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%;
+  background-color: #f1f1f100;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaaaaa00;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #dddddd00;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row, .navbar {   
+    flex-direction: column;
+  }
+}
+
+/*profesinal qualification pic*/
+.PQ {
+  display: inline-flex;
+  border: double 16px transparent;
+  border-radius: 70px;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #f00, #3020ff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/*skill*/
+.skill {
+  display: table;
+  width: 100%;
+}
+.col {
+  display: table-cell;
+  padding: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sk { 
+    display: block;
+    width: 100%;
+  }
+}
+.sk{
+  display: inline-flex;
+  border: double 16px transparent;
+  border-radius: 70px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), radial-gradient(circle at top left, #f00, #3020ff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
