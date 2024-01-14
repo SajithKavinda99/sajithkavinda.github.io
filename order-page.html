@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="order-page.css">
+</head>
+<body>
+
+    <p style="text-align: center; font-size: 4.5vw; color: white;">YOUR ORDER</p>
+
+<div class="main">
+  
+    <label for="fname">Full Name</label>
+    <input type="text" id="fname" name="fullname" placeholder="Your full name..">
+
+    <label for="mail">E-mail</label>
+    <input type="text" id="mail" name="email" placeholder="Your E-mail">
+
+    <label for="phone">Phone Number (Whatapp)</label>
+    <input type="number" id="phone" name="wphone" placeholder="Your whtasapp number">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="Address" placeholder="Your Address">
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="City" placeholder="Your City">
+
+    <label for="state">State</label>
+    <input type="text" id="state" name="State" placeholder="Your State">
+
+    <label for="postal">Postal Code</label>
+    <input type="text" id="postal" name="Postal" placeholder="Your Postal Code">
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="Country" placeholder="Your Country">
+
+    <label for="textarea">Please Type..what You want</label>
+    <textarea id="textarea" placeholder="Please Type shortly and Only important things..."></textarea><br><br>
+
+    <label for="add">Submit Your PDF File &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Please submit the PDF file..it easy to provide best service for you)</label>
+    <input type="file" id="add" name="Add" placeholder="Add Your Files"><br><br>
+
+  
+    <input id="submit" type="submit" value="Submit">
+  </form>
+</div>
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, get, child  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCu-C37ue4Kglgk7ATwKr0XXxclpiXaprY",
+      authDomain: "order-page-of-my-web-page.firebaseapp.com",
+      projectId: "order-page-of-my-web-page",
+      storageBucket: "order-page-of-my-web-page.appspot.com",
+      messagingSenderId: "381946192242",
+      appId: "1:381946192242:web:9b3bbca3d3a83a5e62fdeb"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+        //get ref to database services
+        const db = getDatabase (app);
+      
+        document.getElementById("submit").addEventListener('click' , function(e){
+          e.preventDefault();
+          set(ref(db, 'user/' + document.getElementById("fname").value),
+          {
+            
+            fname: document.getElementById("fname").value,
+            mail: document.getElementById("mail").value,
+            phone: document.getElementById("phone").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            state: document.getElementById("state").value,
+            postal: document.getElementById("postal").value,
+            country: document.getElementById("country").value,
+            textarea: document.getElementById("textarea").value,
+            add: document.getElementById("add").value,
+              
+          });
+      
+          alert("login Sucessful !");
+      
+        });
+      
+  </script>
+    
+</body>
+</html>
