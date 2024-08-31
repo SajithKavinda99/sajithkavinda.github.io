@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 * {
     box-sizing: border-box;
   }
@@ -165,13 +166,22 @@
   
   /*skill*/
   .skill {
-    display: table;
+
     width: 100%;
   
   }
   .col {
     display: table-cell;
     padding: 16px;
+  }
+
+  .button-con{
+    margin-left: -5rem;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   @media only screen and (max-width: 600px) {
@@ -190,7 +200,9 @@
   }
 
   .skk{
-    display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
     border: double 16px transparent;
     border-radius: 70px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), radial-gradient(circle at top left, #f00, #3020ff);
