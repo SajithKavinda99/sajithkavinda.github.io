@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
      box-sizing: border-box;
-     font-family: cursive;
+    
 }
 
 
@@ -18,7 +17,7 @@ img {
 .main {
   position: relative;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.781);
+  background-color: rgba(85, 114, 247, 0.781);
   padding: 20px 0 30px 0;
 } 
 
@@ -60,13 +59,13 @@ input:hover,
 
 /* style the submit button */
 input[type=submit] {
-  background-color: #158905;
+  background-color: #640589;
   color: white;
   cursor: pointer;
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #1404f8;
 }
 
 /* Two-column layout */
@@ -77,6 +76,20 @@ input[type=submit]:hover {
   padding: 0 50px;
   margin-top: 6px;
 }
+.sub2 {
+  width: 50%;
+  padding: 0 50px;
+  margin: 6px auto; /* Centers the element horizontally */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .sub2 {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
 
 /* Clear floats after the columns */
 .topic:after {
@@ -113,8 +126,11 @@ input[type=submit]:hover {
 /* bottom container */
 .bottom-container {
   text-align: center;
-  background-color: #666666;
+  background-color:  #640589;
   border-radius: 0px 0px 4px 4px;
+}
+:hover.sub{
+  background-color: #0905ff;
 }
 
 /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
@@ -131,5 +147,49 @@ input[type=submit]:hover {
   .hide-md-lg {
     display: block;
     text-align: center;
+  }
+}
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  text-align: center;
+  height: 60px;
+}
+
+.flex-item-left {
+  background-color: #640589;
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  background-color:  #640589;
+  padding: 10px;
+  flex: 50%;
+}
+.flex-item-middle {
+  background-color:  #640589;
+  padding: 10px;
+  flex: 50%;
+  height: 60px;
+  text-align: center;
+  font-size: 25px;
+}
+:hover.flex-item-left{
+  background-color: #0450f5;
+}
+:hover.flex-item-right{
+  background-color: #0450f5;
+}
+:hover.flex-item-middle{
+  background-color: #0450f5;
+}
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-item-right, .flex-item-left {
+    flex: 100%;
   }
 }
