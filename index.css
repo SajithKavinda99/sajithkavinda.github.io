@@ -56,7 +56,7 @@
   color: transparent;
   animation: colorChange 3s infinite alternate;
 }
-.dda {
+.daa {
   font-size: 50px;
   background: linear-gradient(to left, rgba(3, 114, 204, 0.452), rgba(115, 0, 130, 0.781), rgb(0, 162, 255), rgb(2, 172, 214), rgba(140, 0, 255, 0.685), rgb(159, 3, 231), rgb(0, 38, 255));
   -webkit-background-clip: text;
