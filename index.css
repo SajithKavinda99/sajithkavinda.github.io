@@ -50,7 +50,7 @@
 }
 
 .da {
-  font-size: 100px;
+  font-size: 70px;
   background: linear-gradient(to left, rgba(3, 114, 204, 0.452), rgba(115, 0, 130, 0.781), rgb(0, 162, 255), rgb(2, 172, 214), rgba(140, 0, 255, 0.685), rgb(159, 3, 231), rgb(0, 38, 255));
   -webkit-background-clip: text;
   color: transparent;
@@ -124,6 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 1000px;
     border: double 16px transparent;
     border-radius: 70px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), radial-gradient(circle at top left, #f00, #3020ff);
