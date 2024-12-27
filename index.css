@@ -124,7 +124,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1000px;
     border: double 16px transparent;
     border-radius: 70px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), radial-gradient(circle at top left, #f00, #3020ff);
