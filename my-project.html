@@ -50,8 +50,8 @@
   /* Scroll Container */
   .scroll-container {
     background-color: #2e2e2e; /* Dark gray */
-    overflow-x: auto;
-    white-space: nowrap;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 405px; /* Reduced height for the scroll container */
     padding: 20px 10px;
     border-radius: 10px;
     margin: 20px auto;
@@ -60,8 +60,8 @@
   }
 
   .scroll-container img {
-    display: inline-block;
-    padding: 10px;
+    display: block;
+    margin: 10px auto; /* Center images vertically */
     width: 600px;
     height: 400px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -111,8 +111,9 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <p>I think you'll be happy</p>
+  <footer style="width: 100%; padding: 20px; background-color: #333; color: #fff; text-align: center; position: relative; bottom: 0;">
+    <p style="margin: 0; font-size: 1.2em;">I think you'll be happy</p>
   </footer>
+  
 </body>
 </html>
