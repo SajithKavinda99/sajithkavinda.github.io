@@ -6,56 +6,154 @@
   <title>My Webpage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .left-section,
+    .right-section {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .left-section {
+      background: url('background.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .left-section img {
+  border-radius: 50%;
+  height: 250px; /* Adjusted height */
+  width: 250px; /* Adjusted width */
+  object-fit: contain; /* Ensures the entire image fits without being cut off */
+  border: 5px solid #fff;
+  margin-bottom: 20px;
+}
+
+
+    .left-section .welcome {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .right-section h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .right-section p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #fff;
+      background: #e94560;
+      border-radius: 25px;
+      transition: background 0.3s;
+      width: 150px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #0f3460;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-links img {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
 </head>
-<body style="background-image: url('background.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-
-  
-
-
-  <div class="flex-container">
-    
-    <div class="flex-item-left">
-      <p class="daa">Welcome to my Webpage</p>
-      <img style="height: 550px; width: 480px;" class="my-photo" src="Staff ID Photo.png" alt="Staff ID Photo">
+<body>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <img src="Staff ID Photo.png" alt="Profile Photo">
+      <p class="welcome">Welcome to My Webpage</p>
     </div>
-    <div class="flex-item-right"><br><br><br><br><br>
-      <h3>Hi..<br>I am Sajith Kavinda</h3>
-      <p class="da">Business Management</p>
-      <p>An Expert in Business side with one year of experience...</p><br><br>
-      <p>Sajith Kavinda Kalansooriya, a follower of the job-seeking pool. Prefers to spend time with the environment and tries to use that time productively. When a responsibility comes to me, I try my best to fulfill it correctly. I can share my knowledge and experience with others and work collaboratively. I try to use all my strengths effectively.</p>
-<br>
-      <div style="width: 200px; height: 50px;"  class="skk">
-        <a style="font-size: 20px; text-decoration: double; color: rgb(235, 240, 245); " href="cv.pdf">
-        My CV</a></div>
 
-      <div class="contact">
+    <!-- Right Section -->
+    <div class="right-section">
+      <h1>Hi, I'm Sajith Kavinda</h1>
+      <p><strong>Business Management</strong> <br>One year of expertise in the business sector.</p>
+      <p>
+        I am Sajith Kavinda Kalansooriya, a professional eager to make an impact. I love spending time in nature and turning it into something productive. I take my responsibilities seriously, collaborate effectively with teams, and share my knowledge to inspire growth.
+      </p>
+      <div>
+        <a class="btn" href="cv.pdf">View My CV</a>
+        <a class="btn" href="profile.html">Profile</a>
+        <a class="btn" href="register.html">Gallery</a>
+      </div>
+      <div class="social-links">
         <a href="https://www.linkedin.com/in/sajith-kavinda-aa0102298">
-          <img class="link" src="icons8-linkedin-48.png" alt="LinkedIn">
+          <img src="icons8-linkedin-48.png" alt="LinkedIn">
         </a>
         <a href="https://github.com/SajithKavinda99">
-          <img class="link" src="github.png" alt="GitHub">
+          <img src="github.png" alt="GitHub">
         </a>
         <a href="https://www.facebook.com/sajith.kavinda.353?mibextid=ZbWKwL">
-          <img class="link" src="icons8-fb-48.png" alt="Facebook">
+          <img src="icons8-fb-48.png" alt="Facebook">
         </a>
         <a href="https://www.gmail.com">
-          <img class="link" src="mail.png" alt="Mail">
+          <img src="mail.png" alt="Email">
         </a>
-      </div><br><br>
-      <div style="display: flex; justify-content: center; align-items: center;">
-        <div style="width: 200px; height: 50px; margin-right: 10px;" class="skk">
-          <a style="font-size: 20px; text-decoration: double; color: aliceblue;" href="profile.html">Profile</a>
-        </div>
-        <div style="width: 200px; height: 50px;" class="skk">
-          <a style="font-size: 20px; text-decoration: double; color: aliceblue;" href="register.html">Gallery</a>
-        </div>
       </div>
-      
-      
-      
-    </div>
     </div>
   </div>
 </body>

@@ -3,169 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my webpage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="profile.css">
+    <title>My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
 
-   
+        /* Header */
+.header {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: center;
+    padding: 20px;
+    background: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .header a:hover {
+            color: #f39c12;
+        }
+
+        
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('background.jpg') center/cover no-repeat;
+        }
+
+        .welcome h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .welcome p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Content Layout */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 30px;
+        }
+
+        .section {
+            background: #1e1e1e;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            flex: 1 1 calc(45% - 40px);
+            min-width: 300px;
+        }
+
+        .section h2 {
+            text-decoration: underline;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section ul, .section p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 30px;
+        }
+
+        .skill {
+            flex: 1;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            background: #333;
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+
+        .skill span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #f39c12;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .gallery a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background: #f39c12;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .gallery a:hover {
+            background: #d35400;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 
-  <body style="background-image: url('background.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <!-- Header -->
+    <div class="header">
+        <a href="index.html">Home</a>
+        <a href="register.html">Gallery</a>
+    </div>
 
 
-<!-- Header -->
+  
 
-<div style="display: flex; justify-content: right; align-items: center;">
-  <div style="width: 200px; height: 50px; margin-right: 10px; margin-top: 10px;" class="skk">
-    <a style="font-size: 20px; text-decoration: double; color: aliceblue;" href="index.html">Home Page</a>
-  </div>
-  <div style="width: 200px; height: 50px; margin-top: 10px; margin-right: 10px;" class="skk">
-    <a style="font-size: 20px; text-decoration: double; color: aliceblue;" href="register.html">Gallery</a>
-  </div>
-</div>
+    <!-- Welcome Section -->
+    <div class="welcome">
+        <h1>Welcome to My Profile</h1>
+        <p>Hello, my name is Sajith, and I am an experienced Business Management professional skilled in driving strategic initiatives, optimizing processes, and achieving organizational goals. I excel in team leadership, project management, and data-driven decision-making to ensure business success.</p>
+    </div>
 
+    <!-- Content Sections -->
+    <div class="content">
 
-      <div style="color: rgb(1, 1, 97);" class="project"> <p class="da" style="text-align: center;">WELCOME TO MY PROFILE</p><BR>
-        <div class="auto" style="font-size: large; text-align: center;">
-          <p style="padding-top: -10%; color: white;">Hello, my name is Sajith,
-          and I am a skilled Data Analyst with extensive experience...
-          I have a deep knowledge of industrial software tools such as Tableau, Snowflake, Power BI, and advanced Excel.
-          My expertise extends to managing relational databases through SQL,
-          and I excel at leveraging these tools to drive data-driven decision-making processes.
-          Over the years, I have honed my problem-solving and analytical skills,
-          allowing me to approach challenges with a strategic mindset.
-          I am passionate about turning raw data into meaningful narratives...
-          My work is driven by a commitment to accuracy, efficiency, and the continuous improvement...
-          I look forward to bringing my skills and experience to new challenges and contributing to the success of the team.
+        <!-- Experience -->
+        <div class="section">
+            <h2>Experience</h2>
+            <p><strong>Dialog Axiata Sri Lanka</strong><br>Training in Channel Planning under National Sales</p>
+            <ul>
+                <li>Sales Performance Analysis & Review</li>
+                <li>Performance Action Planning & Execution</li>
+                <li>Communication & Feedback Management</li>
+                <li>Ad Hoc Reporting & Business Analytics</li>
+                <li>Sales Dashboard for Stock Replenishment</li>
+            </ul>
         </div>
+
+        <!-- Qualifications -->
+        <div class="section" style="text-align: center; margin: 20px 0;">
+          <h2>Projects</h2>
+          <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 10px;">Dashboard and churn analysis development based on sales and billing report at
+                  Dialog Axiata PLC - Internship Project
+              </li>
+          </ul>
+          <div style="margin-top: 20px;">
+              <a href="my-project.html" 
+                 style="text-decoration: none; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; 
+                 background-color: #007BFF; border-radius: 5px; display: inline-block; transition: 0.3s;">
+                  My Project
+              </a>
+          </div>
       </div>
+      
 
+        <!-- Qualifications -->
+        <div class="section">
+            <h2>Qualifications</h2>
+            <ul>
+                <li>B.Sc. in Management from Eastern University</li>
+                <li>Foundations of Project Management at University of Moratuwa</li>
+                <li>Relational Database Management at Evotech Institute</li>
+                <li>Java Programming at Evotech Institute</li>
+                <li>Web Development at Benchmark Institute</li>
+                <li>Adobe Design Tools at WestGate Education</li>
+            </ul>
+        </div>
 
-
-<!-- The flexible grid (content) -->
-<div class="row">
-  <div class="side">
-
-    <br> <H2 style="text-decoration: underline;">Experiance</H2><br>
-
-    <b>Dialog Axiata Sri Lankla<br>
-    Tranning in Channel planning under the Channel Planning and Contrall<br>
-    National Sales</b><br><br>
-
-    1. Sales Performance Analysis & Review<br>
-    Analyze and review sales performance across all Quad products, including HBB and DTV, under National Sales.<br><br>
-
-    2. Performance Action Planning & Execution<br>
-    Plan and execute targeted actions to address sales issues and trends, working closely with regional teams.<br><br>
-
-    3. Communication & Feedback Management<br>
-    Maintain two-way communication with regional teams, provide feedback, and ensure resolution of issues through a closed-loop process.<br><br>
-
-    4. Ad Hoc Reporting & Business Analytics<br>
-    Prepare ad hoc reports and perform business analytics to support decision-making.<br><br>
-
-    5. Sales Dashboard for Stock Replenishment<br>
-    Assist in developing a Sales Dashboard for efficient stock replenishment and enhanced visibility.<br><br><br>
-
-   <br> <H2 style="text-decoration: underline;">PROFESSIONAL SKILLS</H2><br>
-    
-    <div class="skill">
-      <div class="s">Business Analyst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br><br>
-      <div class="s">Project Management&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br><br>
-      <div class="s">Advanced Computer Knowledge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br><br>
-      <div class="s">Prasentation Skills&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-<br><br>
-      <div class="skills-box">
         
+
+         <!-- Professional skill -->
+<div class="section" style="text-align: center;">
+  <h2>Qualifications</h2>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+      <!-- Skill 1 -->
+      <div style="position: relative; width: 140px; height: 140px;">
+          <svg width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#ddd" stroke-width="10"></circle>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#4CAF50" stroke-width="10" 
+                  stroke-dasharray="377" stroke-dashoffset="75" transform="rotate(-90 70 70)"></circle>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span style="font-size: 16px; font-weight: bold; display: block;">85%</span>
+              <span style="font-size: 12px;">Business Analytics</span>
+          </div>
       </div>
-    </div>
+      <!-- Skill 2 -->
+      <div style="position: relative; width: 140px; height: 140px;">
+          <svg width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#ddd" stroke-width="10"></circle>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#2196F3" stroke-width="10" 
+                  stroke-dasharray="377" stroke-dashoffset="113" transform="rotate(-90 70 70)"></circle>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span style="font-size: 16px; font-weight: bold; display: block;">70%</span>
+              <span style="font-size: 12px;">Project Management</span>
+          </div>
+      </div>
+      <!-- Skill 3 -->
+      <div style="position: relative; width: 140px; height: 140px;">
+          <svg width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#ddd" stroke-width="10"></circle>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#FF9800" stroke-width="10" 
+                  stroke-dasharray="377" stroke-dashoffset="94" transform="rotate(-90 70 70)"></circle>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span style="font-size: 16px; font-weight: bold; display: block;">75%</span>
+              <span style="font-size: 12px;">Advanced Computer</span>
+          </div>
+      </div>
+      <!-- Skill 4 -->
+      <div style="position: relative; width: 140px; height: 140px;">
+          <svg width="140" height="140">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#ddd" stroke-width="10"></circle>
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#F44336" stroke-width="10" 
+                  stroke-dasharray="377" stroke-dashoffset="57" transform="rotate(-90 70 70)"></circle>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span style="font-size: 16px; font-weight: bold; display: block;">85%</span>
+              <span style="font-size: 12px;">Presentation</span>
+          </div>
+      </div>
+  </div>
+</div>
+
+
      
-
-    <div class="skill"> <br><br>   
-  </div>
-  </div>
-
-  <!--Personal Qualification-->
-
-  <div class="main">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   
-
-    <H2 style="text-decoration: underline;">PROFESSIONAL QUALIFICATION</H2><br>
-    <p style="font-size: large;">
-      - &nbsp;&nbsp;&nbsp;&nbsp;Eastern University - Course B.Sc. in Management/Bachelor of Science Honours in
-      Management<BR>
-      -&nbsp;&nbsp;&nbsp;&nbsp; Foundations of Project Management at University of Moratuwa<br>
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied english at britishway english academy, kiribathgoda<br>
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied Relational database management system at Evotech institute<br>  
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied Java Advanced Programming language at Evotech institute<br>
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied Certifcate of microsoft office , excel , powerpoint , word at visiontec internatinal-kakirawa<br> 
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied web development: HTML , CSS , Java Script at benchmark institute<br>
-      -&nbsp;&nbsp;&nbsp;&nbsp; Studied Adobe photoshop , Illustrator , Indesign in graphic design at westGate Education<br>
-      </p><br>
-
-
-        <H2 style="text-decoration: underline;">PERSONAL QUALIFICATION</H2><br>
-      <p style="font-size: large;">
-        -&nbsp;&nbsp;&nbsp;&nbsp; Vice prasedent Of sport council in trincomalee campus at 2023<br>
-        -&nbsp;&nbsp;&nbsp;&nbsp; Member of student union in trincomalee campus at 2022 - 2023<br>
-        -&nbsp;&nbsp;&nbsp;&nbsp; NATIONAL YOUTH CORPS Leadership & Personality Development Training<br>
-        -&nbsp;&nbsp;&nbsp;&nbsp; Officer Of The Senior Cadet Team in National Cadet Corp of school level<br>
-        -&nbsp;&nbsp;&nbsp;&nbsp; Head prefect of A/palagala maha vidhuhala at 2017
-        </p>
-
-    <br>
-    <h2 style="text-decoration: underline;">SKILLS</h2><br>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%;" class="skill">
-      <div style="flex: 1; min-width: 200px; margin: 10px 0; margin-right: 20px;" class="s">
-        TEAM WORK <span style="float: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;85%</span>
-      </div>
-      <div style="flex: 1; min-width: 200px; margin: 10px 0; margin-right: 20px;" class="s">
-        LEADERSHIP <span style="float: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80%</span>
-      </div>
-      <div style="flex: 1; min-width: 200px; margin: 10px 0; margin-right: 20px;" class="s">
-        COMMUNICATION <span style="float: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80%</span>
-      </div>
     </div>
-    <BR><BR>
 
-
-
-    <H2 style="text-decoration: underline;">IF YOU WANT TO SEE MY GALLERY</H2>
-    <div class="skill">
-     <div class="button-con">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <div style="width: 250px; height: 50px; "  class="skk">
-        <a style="font-size: 20px; text-decoration: double; color: aliceblue; " href="register.html">
-        Gallery</a></div>
-     </div>
-      <p style="text-align: center; display: flex;
-      align-items: center;
-      justify-content: center;">You can explore my professional activities,<br>
-         which include a range of projects I’ve been involved in. <br>
-         These projects showcase my expertise and the contributions I’ve made in various areas. <br>
-        Feel free to review them to gain a better understanding of my work and accomplishments.
-      <br><br><br>......</p>
+    <!-- Skills Section -->
+    <div class="skills">
+        <div class="skill">Team Work<span>85%</span></div>
+        <div class="skill">Leadership<span>80%</span></div>
+        <div class="skill">Communication<span>80%</span></div>
     </div>
-  </div>
-</div>
 
-<!-- Footer -->
-<div class="footer">
-  <h2>THANK YOU FOR VISIT MY WEBPAGE </h2>
-</div>
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <h2>See My Gallery</h2>
+        <p>Explore my professional activities and projects. These showcase my expertise and contributions in various areas.</p>
+        <a href="register.html">Visit Gallery</a>
+    </div>
 
-    
+    <!-- Footer -->
+    <div class="footer">
+        Thank You for Visiting My Webpage
+    </div>
 
 </body>
 </html>
