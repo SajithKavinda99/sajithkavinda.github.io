@@ -1,290 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Slideshow Gallery</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(45deg, #f06, #ff6347);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      padding: 20px;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+    background-color: #1c1c1c; /* Dark background */
+    color: #d3d3d3; /* Light gray text */
+  }
 
-    /* Profile Link */
-    .profile-link {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
-      background-color: #1860fc;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
+  /* Navigation Bar */
+  .navbar {
+    display: flex;
+    background-color: #333333; /* Very dark gray */
+    padding: 10px;
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center;
+  }
 
-    .profile-link:hover {
-      background-color: #ff4500;
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
+  .navbar a {
+    color: #d3d3d3; /* Light gray text */
+    text-decoration: none;
+    margin-left: 10px; /* Add space between buttons */
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
-    /* Slideshow Container */
-    .slideshow-container {
-      position: relative;
-      width: 80%;
-      max-width: 1000px;
-      height: 500px;
-      background-color: #222;
-      border-radius: 15px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
+  .navbar a:hover {
+    background-color: #555555; /* Darker gray */
+    color: #ffffff; /* White */
+    border-radius: 5px;
+  }
 
-    /* Slides Styling */
-    .mySlides {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
+  /* Heading and Description */
+  h2 {
+    text-align: center;
+    color: #ffa500; /* Orange */
+    margin: 20px 0;
+  }
 
-    .mySlides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 15px;
-    }
+  p {
+    text-align: center;
+    color: #d3d3d3; /* Light gray text */
+    margin: 0 0 20px;
+  }
 
-    /* Caption Container */
-    .caption-container {
-      position: absolute;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-      width: 100%;
-      text-align: center;
-      padding: 15px;
-      border-radius: 0 0 15px 15px;
-    }
+  /* Scroll Container */
+  .scroll-container {
+    background-color: #2e2e2e; /* Dark gray */
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 10px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 90%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  }
 
-    /* Navigation Arrows */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      padding: 15px;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      font-size: 32px;
-      border-radius: 50%;
-      transform: translateY(-50%);
-      transition: background-color 0.3s ease;
-    }
+  .scroll-container img {
+    display: inline-block;
+    padding: 10px;
+    width: 600px;
+    height: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    border: 4px solid #ffa500; /* Orange */
+    background-color: #1c1c1c; /* Matches background */
+  }
 
-    .prev { left: 20px; }
-    .next { right: 20px; }
+  .scroll-container img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(255, 165, 0, 0.5); /* Orange glow */
+    border-color: #ff8c00; /* Darker orange */
+  }
 
-    .prev:hover, .next:hover {
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-
-    /* Thumbnail Navigation */
-    .row {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .column {
-      margin: 5px;
-    }
-
-    .demo {
-      width: 100px;
-      height: 60px;
-      object-fit: cover;
-      opacity: 0.7;
-      cursor: pointer;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .demo:hover {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    .active {
-      opacity: 1;
-      border: 3px solid #ff6347;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .slideshow-container {
-        height: 400px;
-        width: 90%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .slideshow-container {
-        height: 300px;
-        width: 100%;
-      }
-      .demo {
-        width: 80px;
-        height: 50px;
-      }
-    }
-  </style>
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333333; /* Very dark gray */
+    color: #d3d3d3; /* Light gray */
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+</style>
 </head>
 <body>
-
-<!-- Profile Link -->
-<a href="profile.html" class="profile-link">Profile</a>
-
-<!-- Slideshow Container -->
-<div class="slideshow-container">
-
-  <!-- Slides -->
-  <div class="mySlides">
-    <img src="P1.jpg" alt="Project Report">
-    <div class="caption-container">Project Report</div>
-  </div>
-  
-  <div class="mySlides">
-    <img src="P2.jpg" alt="Tableau/SQL/Excel">
-    <div class="caption-container">Tableau/SQL/Excel</div>
-  </div>
-  
-  <div class="mySlides">
-    <img src="P3.jpg" alt="Mountains and fjords">
-    <div class="caption-container">Tableau/SQL/Excel</div>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="profile.html">Profile</a>
+    <a href="index.html">Home</a>
   </div>
 
-  <div class="mySlides">
-    <img src="P4.jpg" alt="Northern Lights">
-    <div class="caption-container">Tableau/SQL/Excel</div>
-  </div>
+  <!-- Main Content -->
+  <h2>Dashboard and churn analysis development based on sales and billing report</h2>
+  <p>Dialog Axiata PLC - Internship Project</p>
 
-  <div class="mySlides">
-    <img src="P5.jpg" alt="Nature and Sunrise">
-    <div class="caption-container">Tableau/SQL/Excel</div>
-  </div>
-
-  <div class="mySlides">
-    <img src="P6.jpg" alt="Mountains and fjords">
-    <div class="caption-container">Tableau/SQL/Excel</div>
-  </div>
-
-  <div class="mySlides">
+  <div class="scroll-container">
+    <img src="P1.jpg" alt="Cinque Terre">
+    <img src="P2.jpg" alt="Forest">
+    <img src="P3.jpg" alt="Northern Lights">
+    <img src="P4.jpg" alt="Mountains">
+    <img src="P5.jpg" alt="Cinque Terre">
+    <img src="P6.jpg" alt="Forest">
     <img src="P7.jpg" alt="Northern Lights">
-    <div class="caption-container">Tableau/SQL/Excel</div>
+    <img src="P8.jpg" alt="Mountains">
   </div>
 
-  <div class="mySlides">
-    <img src="P8.jpg" alt="Nature and Sunrise">
-    <div class="caption-container">Tableau/SQL/Excel</div>
-  </div>
-
-  <!-- Navigation Arrows -->
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-</div>
-
-<!-- Thumbnail Navigation -->
-<div class="row">
-  <div class="column">
-    <img class="demo" src="P1.jpg" onclick="currentSlide(1)" alt="The Woods">
-  </div>
-  <div class="column">
-    <img class="demo" src="P2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
-  </div>
-  <div class="column">
-    <img class="demo" src="P3.jpg" onclick="currentSlide(3)" alt="Mountains">
-  </div>
-  <div class="column">
-    <img class="demo" src="P4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
-  </div>
-  <div class="column">
-    <img class="demo" src="P5.jpg" onclick="currentSlide(5)" alt="Sunrise">
-  </div>
-  <div class="column">
-    <img class="demo" src="P6.jpg" onclick="currentSlide(6)" alt="Mountains">
-  </div>
-  <div class="column">
-    <img class="demo" src="P7.jpg" onclick="currentSlide(7)" alt="Northern Lights">
-  </div>
-  <div class="column">
-    <img class="demo" src="P8.jpg" onclick="currentSlide(8)" alt="Sunrise">
-  </div>
-</div>
-
-<script>
-  let slideIndex = 1;
-
-  // Function to show current slide
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("demo");
-
-    // Reset slideIndex if necessary
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-
-    // Hide all slides
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.opacity = "0";
-    }
-
-    // Remove 'active' class from all dots
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    // Display the current slide
-    slides[slideIndex - 1].style.opacity = "1";
-    dots[slideIndex - 1].className += " active";
-  }
-
-  // Function for previous/next slide
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  // Function for thumbnail navigation
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  // Set auto-slide to change every 5 seconds
-  setInterval(function () {
-    plusSlides(1);
-  }, 5000);
-
-  // Initialize the first slide
-  showSlides(slideIndex);
-</script>
-
+  <!-- Footer -->
+  <footer>
+    <p>I think you'll be happy</p>
+  </footer>
 </body>
 </html>
