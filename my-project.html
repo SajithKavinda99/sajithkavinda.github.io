@@ -1,13 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Slideshow Gallery</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: linear-gradient(45deg, #f06, #ff6347);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    /* Profile link styling */
+    .profile-link {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #1860fc;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .profile-link:hover {
+      background-color: #ff4500;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 20px;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Container for the slideshow */
+    .container {
+      position: relative;
+      max-width: 80%;
+      background-color: #222;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0.98);
+      background: #111;
+    }
+
+    .container:hover {
+      transform: scale(1);
+    }
+
+    /* Slide Styles */
+    .mySlides {
+      display: none;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Caption Container */
+    .caption-container {
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 0 0 15px 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Navigation Arrows */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 32px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+      transform: translateY(-50%);
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Thumbnail Container */
+    .row {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .column {
+      margin: 5px;
+    }
+
+    /* Thumbnail images */
+    .demo {
+      opacity: 0.7;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .demo:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .active {
+      opacity: 1;
+      border: 3px solid #ff6347;
+    }
+
+    /* Keyframe for Slide Transition */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .column {
+        width: 30%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .column {
+        width: 45%;
+      }
+      .container {
+        max-width: 95%;
+      }
+    }
+  </style>
 </head>
 <body>
-    
-    
+
+<!-- Profile Link -->
+<a href="profile.html" class="profile-link">Profile</a>
+
+<!-- Slideshow Container -->
+<div class="container">
+  <!-- Slide 1 -->
+  <div class="mySlides">
+    <img src="P1.jpg" alt="The Woods">
+    <div class="caption-container">
+      <p>Project Report</p>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="mySlides">
+    <img src="P2.jpg" alt="Cinque Terre">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="mySlides">
+    <img src="P3.jpg" alt="Mountains and fjords">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="mySlides">
+    <img src="P4.jpg" alt="Northern Lights">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="mySlides">
+    <img src="P5.jpg" alt="Nature and sunrise">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="mySlides">
+    <img src="P6.jpg" alt="Snowy Mountains">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 7 -->
+  <div class="mySlides">
+    <img src="P7.jpg" alt="Sunrise in the Mountains">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Slide 8 -->
+  <div class="mySlides">
+    <img src="P8.jpg" alt="Serene Lakes">
+    <div class="caption-container">
+      <p>Tableau/SQL/Excel</p>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <!-- Thumbnail Navigation -->
+  <div class="row">
+    <div class="column">
+      <img class="demo" src="P1.jpg" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo" src="P2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo" src="P3.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo" src="P4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo" src="P5.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo" src="P6.jpg" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <img class="demo" src="P7.jpg" onclick="currentSlide(7)" alt="Sunrise in the Mountains">
+    </div>
+    <div class="column">
+      <img class="demo" src="P8.jpg" onclick="currentSlide(8)" alt="Serene Lakes">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("demo");
+    let captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+</script>
 
 </body>
 </html>
