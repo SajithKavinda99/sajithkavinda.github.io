@@ -158,19 +158,15 @@
     <!-- Registration Form -->
     <div class="form-container">
         <div class="form-header">
-            <h1>Login</h1>
+            <h1>Only Admin Can Login</h1>
         </div>
 
         <form id="registrationForm">
-            <input type="text" name="fullname" placeholder="Full Name" required aria-label="Full Name">
-            <input type="number" name="age" placeholder="Age" required aria-label="Age">
-
-            
-            <label><input type="checkbox" name="newsletter"> Subscribe to Newsletter</label>
-            <button type="button" onclick="window.location.href='gallery.html'" style="padding: 12px 20px; background-color: #E67E22; color: white; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
-              Click to Login
-          </button>
+            <input type="text" name="fullname" placeholder="Full Name" required aria-label="User Name">
+            <input type="password" name="age" placeholder="password" required aria-label="Password">
           
+            <label><input type="checkbox" name="newsletter"> Subscribe to Newsletter</label>
+            <button type="submit">Click to Login</button>
             <button type="reset">Clear</button> <!-- Reset button to clear form fields -->
         </form>
 
@@ -180,6 +176,14 @@
             <a href="register.html">Login</a>
         </div>
     </div>
+
+    <script>
+        // JavaScript to handle form submission and redirect
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            window.location.href = 'adminpage.html'; // Redirect to gallery.html page
+        });
+    </script>
 
 </body>
 </html>
