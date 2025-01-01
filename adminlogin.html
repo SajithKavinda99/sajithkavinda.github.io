@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Sajith Kavinda</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Reset styles */
@@ -161,13 +161,11 @@
             <h1>Only Admin Can Login</h1>
         </div>
 
-        <form id="registrationForm">
-            <input type="text" name="fullname" placeholder="Full Name" required aria-label="User Name">
-            <input type="password" name="age" placeholder="password" required aria-label="Password">
-          
-            <label><input type="checkbox" name="newsletter"> Subscribe to Newsletter</label>
-            <button type="submit">Click to Login</button>
-            <button type="reset">Clear</button> <!-- Reset button to clear form fields -->
+        <form id="loginForm">
+            <input type="text" name="username" id="username" placeholder="Username" required aria-label="Username">
+            <input type="password" name="password" id="password" placeholder="Password" required aria-label="Password">
+            <button type="submit">Login</button>
+            <button type="reset">Clear</button>
         </form>
 
         <div class="button-links">
@@ -178,12 +176,57 @@
     </div>
 
     <script>
-        // JavaScript to handle form submission and redirect
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-            window.location.href = 'adminpage.html'; // Redirect to gallery.html page
+        // Admin credentials array
+        const adminCredentials = [
+            { username: "admin", password: "admin123" } // Replace with your own username and password
+        ];
+    
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // Check if the entered username and password match the admin credentials
+            const isAdmin = adminCredentials.some(function(admin) {
+                return admin.username === username && admin.password === password;
+            });
+    
+            if (isAdmin) {
+                // Redirect to the user details page if credentials match
+                window.location.href = 'userdetails.html';
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
         });
+    
+        // Disable right-click
+        function rtclickcheck(event) {
+            if (navigator.appName == "Netscape" && event.which == 3) {
+                alert("function disabled");
+                return false;
+            }
+            if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) {
+                alert("function disabled");
+                return false;
+            }
+        }
+    
+        // Minified version for right-click blocking
+        function rtclickcheck(e) {
+            if (navigator.appName == "Netscape" && e.which == 3) {
+                alert("function disabled");
+                return false;
+            }
+            if (navigator.appVersion.indexOf("MSIE") != -1 && e.button == 2) {
+                alert("function disabled");
+                return false;
+            }
+        }
+        document.onmousedown = rtclickcheck;
     </script>
+    
 
 </body>
 </html>
