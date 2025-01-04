@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sajith Kavinda</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js"></script>
+
     <style>
         /* Reset styles */
         * {
@@ -153,10 +157,7 @@
 <body>
 
     <!-- Top buttons - Home and Profile -->
-    <div class="button-links">
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-    </div>
+   
 
     <!-- Registration Form -->
     <div class="form-container">
@@ -165,10 +166,10 @@
         </div>
 
         <form id="registrationForm">
-            <input type="text" name="fullname" placeholder="Full Name" required aria-label="Full Name">
-            <input type="number" name="age" placeholder="Age" required aria-label="Age">
-            <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
-            <select style="background-color: #ffffff;" name="country" required aria-label="Country">
+            <input id="name" type="text" name="fullname" placeholder="Full Name" required aria-label="Full Name">
+            <input id="age" type="number" name="age" placeholder="Age" required aria-label="Age">
+            <input id="email" type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
+            <select id="country" style="background-color: #ffffff;" name="country" required aria-label="Country">
                 <option value="" disabled selected>Select Country</option>
                 <option value="afghanistan">Afghanistan</option>
                 <option value="albania">Albania</option>
@@ -369,7 +370,7 @@
                 <!-- Country options here (same as in your code) -->
             </select>
             <label><input type="checkbox" name="newsletter"> Subscribe to Newsletter</label>
-            <button type="submit">Click to Login</button>
+            <button id="submit" type="submit">Click to Login</button>
             <button type="reset">Clear</button> <!-- Reset button to clear form fields -->
         </form>
 
@@ -380,13 +381,56 @@
         </div>
     </div>
 
-    <script>
-        // JavaScript to handle form submission and redirect
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-            window.location.href = 'gallery.html'; // Redirect to gallery.html page
-        });
-    </script>
+    
 
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+      
+        // Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
+          authDomain: "protfolio-24471.firebaseapp.com",
+          projectId: "protfolio-24471",
+          storageBucket: "protfolio-24471.appspot.com", // Corrected
+          messagingSenderId: "140758790880",
+          appId: "1:140758790880:web:5327de0ec284b277065685"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+      
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', async function (event) {
+          event.preventDefault(); // Prevent form's default submission behavior
+      
+          // Get form values
+          const name = document.getElementById("name").value;
+          const age = document.getElementById("age").value;
+          const email = document.getElementById("email").value;
+          const country = document.getElementById("country").value;
+      
+          try {
+            // Save data to Firebase Realtime Database
+            await set(ref(db, 'user/' + name), {
+              name,
+              age,
+              email,
+              country,
+            });
+      
+            alert("Registration Successful!");
+      
+            // Redirect to gallery.html
+            window.location.href = 'gallery.html';
+          } catch (error) {
+            console.error("Error saving to database: ", error);
+            alert("An error occurred while registering. Please try again.");
+          }
+        });
+      </script>
+      
 </body>
 </html>
