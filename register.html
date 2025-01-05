@@ -162,12 +162,12 @@
     <!-- Registration Form -->
     <div class="form-container">
         <div class="form-header">
-            <h1>Login</h1>
+            <h1>Register</h1>
         </div>
 
         <form id="registrationForm">
-            <input id="name" type="text" name="fullname" placeholder="Full Name" required aria-label="Full Name">
-            <input id="age" type="number" name="age" placeholder="Age" required aria-label="Age">
+            <input id="name" type="text" name="fullname" placeholder="Firstname and Lastname" required aria-label="Full Name">
+            <input id="password" type="password" name="password" placeholder="Password" minlength="6" required aria-label="Password">
             <input id="email" type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
             <select id="country" style="background-color: #ffffff;" name="country" required aria-label="Country">
                 <option value="" disabled selected>Select Country</option>
@@ -370,66 +370,108 @@
                 <!-- Country options here (same as in your code) -->
             </select>
             <label><input type="checkbox" name="newsletter"> Subscribe to Newsletter</label>
-            <button id="submit" type="submit">Click to Login</button>
+            <button id="submit" type="submit">Click to Register</button>
             <button type="reset">Clear</button> <!-- Reset button to clear form fields -->
         </form>
+        
+
 
         <div class="button-links">
-            <a href="index.html">Home</a>
-            <a href="profile.html">Profile</a>
+            <a href="login.html">Login</a>
         </div>
     </div>
 
     
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
-      
-        // Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
-          authDomain: "protfolio-24471.firebaseapp.com",
-          projectId: "protfolio-24471",
-          storageBucket: "protfolio-24471.appspot.com", // Corrected
-          messagingSenderId: "140758790880",
-          appId: "1:140758790880:web:5327de0ec284b277065685"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-      
-        // Handle form submission
-        document.getElementById('registrationForm').addEventListener('submit', async function (event) {
-          event.preventDefault(); // Prevent form's default submission behavior
-      
-          // Get form values
-          const name = document.getElementById("name").value;
-          const age = document.getElementById("age").value;
-          const email = document.getElementById("email").value;
-          const country = document.getElementById("country").value;
-      
-          try {
-            // Save data to Firebase Realtime Database
-            await set(ref(db, 'user/' + name), {
-              name,
-              age,
-              email,
-              country,
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
+    authDomain: "protfolio-24471.firebaseapp.com",
+    projectId: "protfolio-24471",
+    storageBucket: "protfolio-24471.appspot.com",
+    messagingSenderId: "140758790880",
+    appId: "1:140758790880:web:5327de0ec284b277065685"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
+
+// Handle form submission
+document.getElementById('registrationForm').addEventListener('submit', async function (event) {
+    event.preventDefault(); // Prevent form's default submission behavior
+
+    // Get form values
+    const name = document.getElementById("name").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const country = document.getElementById("country").value;
+
+    try {
+        // Check if user with the same email exists
+        const usersRef = ref(db, 'users/');
+        const usersSnapshot = await get(usersRef);
+
+        let emailExists = false;
+
+        if (usersSnapshot.exists()) {
+            usersSnapshot.forEach((childSnapshot) => {
+                const user = childSnapshot.val();
+                if (user.email === email) {
+                    emailExists = true;
+                }
             });
-      
-            alert("Welcome..Please Click OK to access my Gallery");
-      
-            // Redirect to gallery.html
-            window.location.href = 'gallery.html';
-          } catch (error) {
-            console.error("Error saving to database: ", error);
-            alert("An error occurred while registering. Please try again.");
-          }
+        }
+
+        if (emailExists) {
+            alert('Email already exists. Please use a different email.');
+            return;
+        }
+
+        let passwordExists = false;
+        if (usersSnapshot.exists()) {
+            usersSnapshot.forEach((childSnapshot) => {
+                const user = childSnapshot.val();
+                if (user.password === password) {
+                    emailExists = true;
+                }
+            });
+        }
+        if (emailExists) {
+            alert('password already exists. Please use a different password.');
+            return;
+        }
+
+        // Create user authentication entry
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const userId = userCredential.user.uid;
+
+        // Save user information in the database
+        const userRef = ref(db, `users/${userId}`);
+        await set(userRef, {
+            name,
+            email,
+            password,
+            country
         });
-      </script>
+
+        alert('Registration successful!');
+        // Optionally, redirect to another page
+        window.location.href = 'login.html';
+    } catch (error) {
+        console.error('Error during registration:', error.message);
+        alert(`Registration failed: ${error.message}`);
+    }
+});
+    </script>
+        
       
 </body>
 </html>

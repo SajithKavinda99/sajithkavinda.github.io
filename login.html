@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajith Kavinda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #2C3E50, #34495E);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ecf0f1;
+            margin: 0;
+            position: relative;
+        }
+
+        /* Position buttons at top-right */
+        .button-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .button-links a {
+            text-decoration: none;
+            background-color: #34495E;
+            color: #ecf0f1;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .button-links a:hover {
+            background-color: #2C3E50;
+            color: #fff;
+        }
+
+        .form-container {
+            background: #2C3E50;
+            width: 400px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-header {
+            text-align: center;
+        }
+
+        .form-header h1 {
+            color: #E67E22;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, select, button {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #7F8C8D;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #E67E22;
+            box-shadow: 0 0 8px rgba(230, 126, 34, 0.5);
+        }
+
+        select {
+            background: #34495E;
+        }
+
+        button {
+            background-color: #E67E22;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #F39C12;
+            color: #333;
+        }
+
+        .button-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button-links a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+            transition: 0.3s ease;
+            background-color: #e94560;
+        }
+
+        .button-links a:hover {
+            color: #f3f4f5;
+            background-color: #0f3460;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #BDC3C7;
+        }
+
+        .footer a {
+            color: #E67E22;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #F39C12;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Registration Form -->
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Login</h1>
+            <h3>If you do not have an account, please use the Register button above.</h3>
+        </div>
+
+        <form id="loginForm">
+            <input id="email" type="email" name="email" placeholder="Email Address" required>
+            <input id="password" type="password" name="password" placeholder="Password" required>
+            <button id="submit" type="submit">Click to Login</button>
+            <button type="reset">Clear</button>
+        </form>
+
+        <div class="button-links">
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
+            authDomain: "protfolio-24471.firebaseapp.com",
+            projectId: "protfolio-24471",
+            storageBucket: "protfolio-24471.appspot.com",
+            messagingSenderId: "140758790880",
+            appId: "1:140758790880:web:5327de0ec284b277065685"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful! Redirecting to the gallery...");
+
+                // Store the email in localStorage
+                localStorage.setItem('userEmail', email);
+
+                // Redirect to gallery.html
+                window.location.href = 'gallery.html';
+            } catch (error) {
+                console.error("Login Error: ", error.message);
+                alert("Login failed. Check email and password.");
+            }
+        });
+    </script>
+
+</body>
+</html>

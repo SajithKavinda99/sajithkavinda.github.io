@@ -173,12 +173,14 @@
     </style>
 </head>
 <body>
+    <br> <div><p style="font-size: 2vw; text-align: left;" class="user-email" id="user-email">
+        Loading your email...</p></div>
 
     <!-- Navbar links -->
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="profile.html">Profile</a>
-        <a href="register.html">Login</a>
+        <a href="login.html">Login</a>
     </div>
 
     <!-- Tab buttons -->
@@ -309,6 +311,17 @@
     </div>
 
     <script>
+        
+         // Retrieve the email from localStorage
+         const userEmail = localStorage.getItem('userEmail');
+
+        if (userEmail) {
+        // Display the email on the page
+        document.getElementById('user-email').innerText = `Logged in as : ${userEmail}`;
+        } else {
+        document.getElementById('user-email').innerText = "No user logged in";
+        }
+
         function openPage(pageName, elmnt, color) {
             var i, tabcontent, tablinks;
 
