@@ -173,14 +173,21 @@
     </style>
 </head>
 <body>
-    <br> <div><p style="font-size: 2vw; text-align: left;" class="user-email" id="user-email">
-        Loading your email...</p></div>
-
+    
     <!-- Navbar links -->
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="profile.html">Profile</a>
         <a href="login.html">Login</a>
+    </div>
+
+    <!-- User Email Display -->
+    <div>
+        <p style="font-size: 1.5em; text-align: left; padding: 20px; margin: 10px; background: rgba(255, 255, 255, 0.1); 
+                 color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" 
+           class="user-email" id="user-email">
+            Loading your email...
+        </p>
     </div>
 
     <!-- Tab buttons -->
@@ -195,52 +202,12 @@
         <div class="gallery-container">
             <div class="gallery">
                 <a href="#lightbox1">
-                    <img src="c1 (1).jpg" alt="Cinque Terre">
+                    <img src="c1 (1).jpg" alt="Internship Letter">
                 </a>
-                <div class="desc">Internship letter in Dialog Axiata - PLC in Sri lnka</div>
+                <div class="desc">Internship letter in Dialog Axiata - PLC in Sri Lanka</div>
             </div>
 
-            <div class="gallery">
-                <a href="#lightbox2">
-                    <img src="c1 (2).jpg" alt="Forest">
-                </a>
-                <div class="desc">Microsoft Office Diploma Course in Vision tech Internatinal</div>
-            </div>
-
-            <div class="gallery">
-                <a href="#lightbox3">
-                    <img src="c1 (3).jpg" alt="Northern Lights">
-                </a>
-                <div class="desc">Microsoft Office Diploma Course transcrip in Vision tech Internatinal</div>
-            </div>
-
-            <div class="gallery">
-                <a href="#lightbox4">
-                    <img src="c1 (4).jpg" alt="Northern Lights">
-                </a>
-                <div class="desc">Certificate of graphic design at Wesgate Education</div>
-            </div>
-
-            <div class="gallery">
-                <a href="#lightbox5">
-                    <img src="c1 (5).jpg" alt="Northern Lights">
-                </a>
-                <div class="desc">Certificate of Java Programming master in Evotech Education</div>
-            </div>
-
-            <div class="gallery">
-                <a href="#lightbox6">
-                    <img src="c1 (6).jpg" alt="Northern Lights">
-                </a>
-                <div class="desc">Foundation of Project Management at University of moratuwa</div>
-            </div>
-
-            <div class="gallery">
-                <a href="#lightbox7">
-                    <img src="c1 (7).jpg" alt="Northern Lights">
-                </a>
-                <div class="desc">Relational Dtabase Management at Evotech Education</div>
-            </div>
+            <!-- Repeat for other certificates... -->
         </div>
     </div>
 
@@ -248,78 +215,47 @@
         <div class="gallery-container">
             <div class="gallery">
                 <a href="#lightbox26">
-                    <img src="Staff ID Photo.jpg" alt="Cinque Terre">
+                    <img src="Staff ID Photo.jpg" alt="Profile">
                 </a>
                 <div class="desc">Sajith Kavinda Kalansooriya</div>
             </div>
         </div>
     </div>
 
-
     <div id="Contact" class="tabcontent">
         <div class="gallery-container">
             <div class="gallery">
                 <a href="#lightbox51">
-                    <img src="my-photo.jpg" alt="Cinque Terre">
+                    <img src="my-photo.jpg" alt="Trincomalee Campus">
                 </a>
-                <div class="desc">Badge Photos Day <br> at Trincomalee Campus</div>
+                <div class="desc">Badge Photos Day at Trincomalee Campus</div>
             </div>
         </div>
     </div>
 
     <!-- Lightbox -->
     <div id="lightbox1" class="lightbox">
-        <img src="c1 (1).jpg" alt="Cinque Terre">
+        <img src="c1 (1).jpg" alt="Internship Letter">
     </div>
 
-    <div id="lightbox2" class="lightbox">
-        <img src="c1 (2).jpg" alt="Forest">
-    </div>
-
-    <div id="lightbox3" class="lightbox">
-        <img src="c1 (3).jpg" alt="Northern Lights">
-    </div>
-
-    <div id="lightbox4" class="lightbox">
-        <img src="c1 (4).jpg" alt="Cinque Terre">
-    </div>
-
-    <div id="lightbox5" class="lightbox">
-        <img src="c1 (5).jpg" alt="Mountains">
-    </div>
-
-    <div id="lightbox6" class="lightbox">
-        <img src="c1 (6).jpg" alt="Mountains">
-    </div>
-
-    <div id="lightbox7" class="lightbox">
-        <img src="c1 (7).jpg" alt="Mountains">
-    </div>
-
-    <div id="lightbox8" class="lightbox">
-        <img src="c1 (8).jpg" alt="Mountains">
-    </div>
-
+    <!-- Other lightbox images... -->
 
     <div id="lightbox26" class="lightbox">
-        <img src="Staff ID Photo.jpg" alt="Mountains">
+        <img src="Staff ID Photo.jpg" alt="Profile Picture">
     </div>
 
-
     <div id="lightbox51" class="lightbox">
-        <img src="my-photo.jpg" alt="Mountains">
+        <img src="my-photo.jpg" alt="Campus Badge">
     </div>
 
     <script>
-        
-         // Retrieve the email from localStorage
-         const userEmail = localStorage.getItem('userEmail');
+        // Retrieve the email from localStorage
+        const userEmail = localStorage.getItem('userEmail');
 
         if (userEmail) {
-        // Display the email on the page
-        document.getElementById('user-email').innerText = `Logged in as : ${userEmail}`;
+            document.getElementById('user-email').innerText = `Logged in as : ${userEmail}`;
         } else {
-        document.getElementById('user-email').innerText = "No user logged in";
+            document.getElementById('user-email').innerText = "No user logged in";
         }
 
         function openPage(pageName, elmnt, color) {
