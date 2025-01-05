@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sajith Kavinda</title>
+    <title>Account Page - Sajith Kavinda</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
@@ -14,10 +14,8 @@
         body, html {
             height: 100%;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #2c3e50, #34495e); /* Gradient background */
+            background: linear-gradient(to right, #2c3e50, #34495e);
             color: white;
-            display: flex;
-            flex-direction: column;
             font-size: 16px;
         }
 
@@ -44,8 +42,44 @@
         }
 
         .navbar a:hover {
-            background-color: #34495e;
+            background-color: #0f3460;
             transform: scale(1.05);
+        }
+
+        /* Account Info section */
+        .account-info {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            float: left;
+            width: 25%;
+            margin-right: 20px;
+        }
+
+        .account-info img {
+            width: 120px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .account-info p {
+            font-size: 1.2em;
+        }
+
+        /* Content beside account info */
+        .main-content {
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.5em;
+            color: white;
+            line-height: 1.6;
         }
 
         /* Tab buttons container */
@@ -59,7 +93,8 @@
         .tablink {
             background-color: #34495e;
             color: white;
-            border: none;
+            border-style: double;
+            border-color: aliceblue;
             padding: 14px 20px;
             font-size: 18px;
             width: 33.33%;
@@ -68,10 +103,11 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             font-weight: bold;
+            
         }
 
         .tablink:hover {
-            background-color: #2c3e50;
+            background-color: #0f3460;
             transform: scale(1.05);
         }
 
@@ -82,7 +118,6 @@
             color: white;
             padding: 20px;
             border-radius: 0 0 8px 8px;
-            height: calc(100vh - 200px); /* Adjust for navbar and tabs */
             overflow-y: auto;
         }
 
@@ -94,166 +129,77 @@
                 padding: 12px 20px;
             }
 
-            .gallery {
+            .navbar a {
+                padding: 12px;
+            }
+
+            .account-info {
+                float: none;
                 width: 100%;
                 margin-bottom: 20px;
             }
 
-            .navbar a {
-                padding: 12px;
+            .main-content {
+                padding: 10px;
             }
-        }
-
-        /* Gallery container - flexbox layout */
-        .gallery-container {
-            display: flex;
-            flex-wrap: wrap; /* Allow images to wrap to the next row */
-            justify-content: space-between; /* Space out the images evenly */
-            margin: 0 auto;
-        }
-
-        .gallery {
-            margin: 10px;
-            border: 2px solid #fff;
-            display: inline-block;
-            width: 30%; /* Three images per row, each taking up 30% of the width */
-            text-align: center;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .gallery img {
-            width: 100%; /* Ensure the image fills the gallery container */
-            height: auto;
-            max-width: 250px; /* Limit the max width */
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .gallery:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .desc {
-            padding: 15px;
-            text-align: center;
-            font-size: 14px;
-            color: #ecf0f1;
-            background-color: #2c3e50;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        /* Lightbox styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            padding: 50px;
-            background: rgba(0, 0, 0, 0.8);
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-
-        .lightbox:target {
-            display: flex;
+           
         }
     </style>
 </head>
 <body>
-    
     <!-- Navbar links -->
-    <div class="navbar">
+    <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="profile.html">Profile</a>
-        <a href="login.html">Login</a>
-    </div>
+        <a href="login.html">Logout</a>
+    </nav>
 
-    <!-- User Email Display -->
-    <div>
-        <p style="font-size: 1.5em; text-align: left; padding: 20px; margin: 10px; background: rgba(255, 255, 255, 0.1); 
-                 color: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" 
-           class="user-email" id="user-email">
-            Loading your email...
-        </p>
-    </div>
+    <!-- Account Info and Main Content -->
+    <section>
+        <div class="account-info">
+            <img src="boy.png" alt="User Avatar">
+            <p id="user-email">Loading your email...</p>
+        </div>
+        <div style="text-align: center;" class="main-content">
+            <p>
+                Welcome to your account page and Enjoy...!
+            </p>
+        </div>
+    </section>
 
     <!-- Tab buttons -->
-    <div class="tab-container">
-        <button class="tablink" onclick="openPage('Home', this, '#3498db')">Certificates</button>
-        <button class="tablink" onclick="openPage('News', this, '#3498db')" id="defaultOpen">Professional</button>
-        <button class="tablink" onclick="openPage('Contact', this, '#3498db')">Personal</button>
-    </div>
+    <section>
+        <div class="tab-container">
+            <button class="tablink" onclick="openPage('Profile', this, '#e94560')">Profile</button>
+            <button class="tablink" onclick="openPage('Activity', this, '#e94560')" id="defaultOpen">My Project</button>
+        </div>
+    </section>
 
     <!-- Tab content sections -->
-    <div id="Home" class="tabcontent">
-        <div class="gallery-container">
-            <div class="gallery">
-                <a href="#lightbox1">
-                    <img src="c1 (1).jpg" alt="Internship Letter">
-                </a>
-                <div class="desc">Internship letter in Dialog Axiata - PLC in Sri Lanka</div>
-            </div>
-
-            <!-- Repeat for other certificates... -->
+    <section id="Profile" class="tabcontent">
+        <div class="scroll-container" style="display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; background-color: #f0f0f0; border: 2px solid #ddd; border-radius: 10px;">
+            <img src="c1 (1).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (2).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (3).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (4).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (5).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (6).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+            <img src="c1 (7).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
         </div>
-    </div>
+        
+    </section>
 
-    <div id="News" class="tabcontent">
-        <div class="gallery-container">
-            <div class="gallery">
-                <a href="#lightbox26">
-                    <img src="Staff ID Photo.jpg" alt="Profile">
-                </a>
-                <div class="desc">Sajith Kavinda Kalansooriya</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="Contact" class="tabcontent">
-        <div class="gallery-container">
-            <div class="gallery">
-                <a href="#lightbox51">
-                    <img src="my-photo.jpg" alt="Trincomalee Campus">
-                </a>
-                <div class="desc">Badge Photos Day at Trincomalee Campus</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lightbox -->
-    <div id="lightbox1" class="lightbox">
-        <img src="c1 (1).jpg" alt="Internship Letter">
-    </div>
-
-    <!-- Other lightbox images... -->
-
-    <div id="lightbox26" class="lightbox">
-        <img src="Staff ID Photo.jpg" alt="Profile Picture">
-    </div>
-
-    <div id="lightbox51" class="lightbox">
-        <img src="my-photo.jpg" alt="Campus Badge">
-    </div>
+    <section id="Activity" class="tabcontent">
+        <h3>Recent Activity</h3>
+        <p>This is a summary of your recent activities. Track your actions here.</p>
+    </section>
 
     <script>
         // Retrieve the email from localStorage
         const userEmail = localStorage.getItem('userEmail');
 
         if (userEmail) {
-            document.getElementById('user-email').innerText = `Logged in as : ${userEmail}`;
+            document.getElementById('user-email').innerText = `Logged in as: ${userEmail}`;
         } else {
             document.getElementById('user-email').innerText = "No user logged in";
         }
@@ -283,6 +229,5 @@
         // Trigger click on the default tab to open it on page load
         document.getElementById("defaultOpen").click();
     </script>
-
 </body>
 </html>
