@@ -146,22 +146,15 @@
                     </div>
     
         <!-- Profile Photo -->
-        <div class="about" style="background-color: #1a1a1a; padding: 20px; height: 100%; display: flex; flex-direction: column; align-items: center; font-family: 'Montserrat', sans-serif;">
-    
-            <!-- Profile Photo -->
-            <img src="Staff ID Photo.png" alt="Profile Photo" 
-                 style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid #ccc; object-fit: cover; margin-bottom: 20px; 
-                        transition: box-shadow 0.3s ease; 
-                        box-shadow: 0 0 60px rgba(20, 24, 250, 0.7), 0 0 15px rgba(18, 70, 243, 0.6), 0 0 20px rgba(18, 59, 243, 0.5);">
-            
-            <!-- Name -->
-            <h1 style="font-size: 1.6em; text-align: center; margin-bottom: 10px;">Sajith Kavinda</h1>
-            
-            <!-- Introduction Text -->
-            <p style="text-align: center; font-size: 1em; line-height: 1.6; margin-top: 10px; padding: 0 20px;">
-                Hello, my name is Sajith, and I am an experienced Business Management professional skilled in driving strategic initiatives, optimizing processes, and achieving organizational goals. I excel in team leadership, project management, and data-driven decision-making to ensure business success.
-            </p>
-        </div>    </div>
+        <img src="Staff ID Photo.png" alt="Profile Photo" 
+        style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid #ccc; object-fit: cover; margin-bottom: 20px; 
+               transition: box-shadow 0.3s ease; 
+               box-shadow: 0 0 60px rgba(20, 24, 250, 0.7), 0 0 15px rgba(18, 70, 243, 0.6), 0 0 20px rgba(18, 59, 243, 0.5);">
+   
+       
+        <!-- Name -->
+        <h1 style="font-size: 1.6em; text-align: center; margin-bottom: 10px;">Sajith Kavinda</h1>
+    </div>
     
     
     <!-- Right Content -->
@@ -264,30 +257,6 @@
     </div>
 
 </div>
-<script>
-    const resizeProfile = () => {
-        const width = window.innerWidth;
-        const img = document.querySelector('.about img');
-        const h1 = document.querySelector('.about h1');
-        const p = document.querySelector('.about p');
-        
-        if (width <= 768) { // Mobile screens
-            img.style.width = "150px";
-            img.style.height = "150px";
-            h1.style.fontSize = "1.2em";
-            p.style.fontSize = "0.9em";
-            p.style.padding = "0 10px";
-        } else {
-            img.style.width = "200px";
-            img.style.height = "200px";
-            h1.style.fontSize = "1.6em";
-            p.style.fontSize = "1em";
-            p.style.padding = "0 20px";
-        }
-    };
 
-    window.addEventListener('resize', resizeProfile);
-    window.addEventListener('load', resizeProfile);
-</script>
 </body>
 </html>
