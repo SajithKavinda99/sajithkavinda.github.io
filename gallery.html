@@ -10,224 +10,282 @@
             padding: 0;
         }
 
-        /* Set height of body and html to 100% */
         body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed; /* Set the background image */
+    background-size: cover; /* Make sure the background image covers the whole screen */
+    color: #333;
+}
+
+
+        .sidebar {
+            width: 250px;
             height: 100%;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #2c3e50, #34495e);
-            color: white;
-            font-size: 16px;
-        }
-
-        /* Flex container for navigation bar */
-        .navbar {
-            display: flex;
-            justify-content: right;
+            position: fixed;
             background-color: #2c3e50;
-            padding: 15px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar a {
-            color: white;
+        .sidebar a {
             text-decoration: none;
-            padding: 12px 25px;
-            text-align: center;
+            color: white;
+            padding: 15px 20px;
+            display: block;
             font-size: 18px;
-            margin: 0 15px;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold;
-            background: #e94560;
-        }
-
-        .navbar a:hover {
-            background-color: #0f3460;
-            transform: scale(1.05);
-        }
-
-        /* Account Info section */
-        .account-info {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin: 10px 15px;
             text-align: center;
-            float: left;
-            width: 25%;
-            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #e94560;
+        }
+
+        .sidebar .active {
+            background-color: #e94560;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .account-info {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .account-info img {
-            width: 120px;
-            height: auto;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin-bottom: 15px;
+            border: 3px solid #e94560;
         }
 
-        .account-info p {
-            font-size: 1.2em;
+        .account-info .details {
+            flex: 1;
         }
 
-        /* Content beside account info */
-        .main-content {
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        .main-content p {
-            font-size: 1.5em;
-            color: white;
-            line-height: 1.6;
-        }
-
-        /* Tab buttons container */
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            background-color: #34495e;
-            padding: 10px 0;
-        }
-
-        .tablink {
-            background-color: #34495e;
-            color: white;
-            border-style: double;
-            border-color: aliceblue;
-            padding: 14px 20px;
+        .account-info .details p {
             font-size: 18px;
-            width: 33.33%;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold;
-            
+            margin: 5px 0;
+            color: #fcfafa;
         }
 
-        .tablink:hover {
-            background-color: #0f3460;
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            flex: 1;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background: #2c3e50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tabs button.active, .tabs button:hover {
+            background-color: #e94560;
+        }
+
+        .tabcontent {
+            display: none;
+            background: #2c3e50;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabcontent.active {
+            display: block;
+        }
+
+        .scroll-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 15px; /* Adjust the gap between images */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    padding: 10px;
+    max-height: 430px; /* Set a maximum height for vertical scrolling */
+    background-color: #2c3e50;
+}
+
+.scroll-container img {
+    width: calc(25% - 15px); /* Make each image take up 25% of the container width, minus the gap */
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+
+
+        .scroll-container img:hover {
             transform: scale(1.05);
         }
 
-        /* Tab content styles */
-        .tabcontent {
-            display: none;
-            background-color: #34495e;
-            color: white;
-            padding: 20px;
-            border-radius: 0 0 8px 8px;
-            overflow-y: auto;
-        }
-
-        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
-            .tablink {
+            .sidebar {
                 width: 100%;
+                height: auto;
+                position: relative;
+                flex-direction: row;
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .sidebar a {
+                margin: 0 5px;
                 font-size: 16px;
-                padding: 12px 20px;
-            }
-
-            .navbar a {
-                padding: 12px;
-            }
-
-            .account-info {
-                float: none;
-                width: 100%;
-                margin-bottom: 20px;
             }
 
             .main-content {
+                margin-left: 0;
                 padding: 10px;
             }
-           
+
+            .account-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tabs button {
+                font-size: 14px;
+            }
+
+            .scroll-container img {
+                width: 150px;
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar links -->
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-        <a href="login.html">Logout</a>
-    </nav>
 
-    <!-- Account Info and Main Content -->
-    <section>
+   
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="profile.html" class="active">Profile</a>
+        <a href="index.html">Home</a>
+        <a href="login.html">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Account Info -->
         <div class="account-info">
             <img src="boy.png" alt="User Avatar">
-            <p id="user-email">Loading your email...</p>
-        </div>
-        <div style="text-align: center;" class="main-content">
-            <p>
-                Welcome to your account page and Enjoy...!
-            </p>
-        </div>
-    </section>
+            <div class="details">
+                <p>Welcome to your account page!</p>
 
-    <!-- Tab buttons -->
-    <section>
-        <div class="tab-container">
-            <button class="tablink" onclick="openPage('Profile', this, '#e94560')">Profile</button>
-            <button class="tablink" onclick="openPage('Activity', this, '#e94560')" id="defaultOpen">My Project</button>
+                <p id="user-email">Loading your email...</p>
+            </div>
         </div>
-    </section>
 
-    <!-- Tab content sections -->
-    <section id="Profile" class="tabcontent">
-        <div class="scroll-container" style="display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; background-color: #f0f0f0; border: 2px solid #ddd; border-radius: 10px;">
-            <img src="c1 (1).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (2).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (3).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (4).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (5).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (6).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
-            <img src="c1 (7).jpg" alt="Cinque Terre" style="width: 300px; height: 400px; object-fit: cover; border-radius: 8px;">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tablink active" onclick="openTab(event, 'Profile')">Certificates</button>
+            <button class="tablink" onclick="openTab(event, 'Activity')">My Project</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="Profile" class="tabcontent active">
+            <div class="scroll-container">
+                <img src="c1 (1).jpg" alt="Gallery Image">
+                <img src="c1 (2).jpg" alt="Gallery Image">
+                <img src="c1 (3).jpg" alt="Gallery Image">
+                <img src="c1 (4).jpg" alt="Gallery Image">
+                <img src="c1 (5).jpg" alt="Gallery Image">
+                <img src="c1 (6).jpg" alt="Gallery Image">
+                <img src="c1 (7).jpg" alt="Gallery Image">
+            </div>
+        </div>
+
+        <div id="Activity" class="tabcontent" style="max-height: 450px; overflow-y: auto; padding: 10px;">
+    
+            <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
+                <!-- Link to download the zip file, positioned in front of the image -->
+                <a href="JAVA crud system.zip" download 
+                   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #2c3e50; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+                   Download CRUD Management System
+                </a> 
+                
+                <!-- Display an image -->
+                <img src="crud system.png" alt="Image 1" width="100%" height="100%" style="object-fit: cover; border-radius: 8px;">
+            </div>
+        
+            <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
+                <!-- Link to download the zip file, positioned in front of the image -->
+                <a href="student management system.zip" download 
+                   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #2c3e50; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+                   Download Students Management System
+                </a> 
+                
+                <!-- Display an image -->
+                <img src="student management system.png" alt="Image 2" width="100%" height="100%" style="object-fit: cover; border-radius: 8px;">
+            </div>
+        
+            <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
+                <!-- Link to download the zip file, positioned in front of the image -->
+                <a href="Java_calculator.zip" download 
+                   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #2c3e50; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+                   Download Java Calculator
+                </a> 
+                
+                <!-- Display an image -->
+                <img src="calculator.png" alt="Image 3" width="100%" height="100%" style="object-fit: cover; border-radius: 8px;">
+            </div>
+        
+            <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
+                <!-- Link to download the zip file, positioned in front of the image -->
+                <a href="java_simple_calculator.zip" download 
+                   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #2c3e50; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+                   Download Java Simple Calculator
+                </a> 
+                
+                <!-- Display an image -->
+                <img src="simple calculator.png" alt="Image 4" width="100%" height="100%" style="object-fit: cover; border-radius: 8px;">
+            </div>  
+             
         </div>
         
-    </section>
-
-    <section id="Activity" class="tabcontent">
-        <h3>Recent Activity</h3>
-        <p>This is a summary of your recent activities. Track your actions here.</p>
-    </section>
+        
+    </div>
 
     <script>
-        // Retrieve the email from localStorage
-        const userEmail = localStorage.getItem('userEmail');
+        const userEmail = localStorage.getItem('userEmail') || "No user logged in";
+        document.getElementById('user-email').textContent = `Logged in as: ${userEmail}`;
 
-        if (userEmail) {
-            document.getElementById('user-email').innerText = `Logged in as: ${userEmail}`;
-        } else {
-            document.getElementById('user-email').innerText = "No user logged in";
+        function openTab(event, tabName) {
+            const tabs = document.querySelectorAll('.tablink');
+            const tabcontents = document.querySelectorAll('.tabcontent');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabcontents.forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
         }
-
-        function openPage(pageName, elmnt, color) {
-            var i, tabcontent, tablinks;
-
-            // Hide all tab content
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Remove background color from all tablinks
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-
-            // Show the clicked tab's content
-            document.getElementById(pageName).style.display = "block";
-
-            // Change background color of the clicked tab
-            elmnt.style.backgroundColor = color;
-        }
-
-        // Trigger click on the default tab to open it on page load
-        document.getElementById("defaultOpen").click();
     </script>
 </body>
 </html>
