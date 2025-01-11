@@ -4,68 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sajith Kavinda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset styles */
-        * {
+        body {
+            background: url('bg.jpg') no-repeat center center fixed; /* Use background image */
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow: hidden; /* Prevent scroll bars */
+            display: flex;
+            flex-direction: column;
         }
 
-        body {
-    background: url('bg.jpg') no-repeat center center fixed; /* Use background image */
-    background-size: cover; /* Ensure the image covers the entire viewport */
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #ecf0f1;
-    margin: 0;
-    position: relative;
+        /* Layout */
+        /* Layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: #2c3e50;
+            padding-top: 1px;
+            display: inherit;
+            justify-content: right;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 50px;
+            display: block;
+            font-size: 18px;
+            border-radius: 5px;
+            margin: 10px 15px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            background-color: #e94560;
+        }
+
+        .sidebar a:hover{
+            background-color: #0f3460;
+        }
+
+        /* Content (Right Side) */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .section {
+    background: #1e1e1e98;
+    margin: 1px auto; /* Centers the element horizontally */
+    padding: 20px;
+    border-style: double;
+    border-color: #2646fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 30%;
+    box-sizing: border-box;
+    text-align: center; /* Optional: Centers text inside the section */
 }
 
 
-        /* Position buttons at top-right */
-        .button-links {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
+        @media (max-width: 1024px) {
+            .content {
+                gap: 15px;
+            }
+
+            .section {
+                width: 48%;
+            }
         }
 
-        .button-links a {
-            text-decoration: none;
-            background-color: #34495E;
-            color: #ecf0f1;
-            padding: 12px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.3s ease;
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: row;
+                padding: 10px;
+            }
+
+            .section {
+                width: 100%;
+            }
         }
 
-        .button-links a:hover {
-            background-color: #2C3E50;
-            color: #fff;
+        @media (max-width: 480px) {
+            .content {
+                padding: 5px;
+                gap: 10px;
+            }
+
+            .section {
+                padding: 15px;
+                margin: 10px 0;
+            }
         }
 
-        .form-container {
-            background: #2c3e500c;
-            width: 400px;
-            padding: 30px;
-            border-style: double;
-            border-color: #1612f3;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .section h2 {
+            text-decoration: underline;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
+        .section ul, .section p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: #1a1a1a;
+            font-size: 1.2em;
+        }
         .form-header {
             text-align: center;
         }
@@ -134,90 +195,81 @@
             background-color: #0f3460;
         }
 
-        .footer {
-            text-align: center;
-            font-size: 14px;
-            color: #BDC3C7;
-        }
-
-        .footer a {
-            color: #E67E22;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #1612f3;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Registration Form -->
-    <div class="form-container">
-        <div class="form-header">
-            <h1>Login</h1>
-            <h3>If you do not have an account, please use the Register button above.</h3>
-        </div>
+<div class="container">
 
-        <form id="loginForm">
-            <input id="email" type="email" name="email" placeholder="Email Address" required>
-            <input id="password" type="password" name="password" placeholder="Password" required>
-            <a 
-            style="height: 40px; text-decoration: none; color: white; border-radius: 10px; transition: color 0.3s ease;"  
-            href="fogetpassword.html" 
-            onmouseover="this.style.color='blue';" 
-            onmouseout="this.style.color='white';">
-            Forget your Password
-        </a>            
-            <button id="submit" type="submit">Click to Login</button>
-            <button type="reset">Clear</button>
-        </form>
-
-        <div class="button-links">
-            <a href="index.html">Home</a>
-            <a href="profile.html">Profile</a>
-            <a href="register.html">Register</a>
-        </div>
+    <!-- Top Sidebar -->
+    <div class="sidebar">
+        <a href="index.html" class="active">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="register.html">Register</a>
     </div>
+    
+    <!-- Right Content -->
+    <div class="content">
+        <!-- About me -->
+        <div  class="section">
+            <div class="form-header">
+                <h1>Login</h1>
+                <h3>If you do not have an account, please use the Register button above.</h3>
+            </div>
+    
+            <form id="loginForm">
+                <input id="email" type="email" name="email" placeholder="Email Address" required>
+                <input id="password" type="password" name="password" placeholder="Password" required>
+                <a 
+                style="height: 40px; text-decoration: none; color: white; border-radius: 10px; transition: color 0.3s ease;"  
+                href="fogetpassword.html" 
+                onmouseover="this.style.color='blue';" 
+                onmouseout="this.style.color='white';">
+                Forget your Password
+            </a>            
+                <button id="submit" type="submit">Click to Login</button>
+                <button type="reset">Clear</button>
+            </form>
+    
+    </div>
+</div>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
+        authDomain: "protfolio-24471.firebaseapp.com",
+        projectId: "protfolio-24471",
+        storageBucket: "protfolio-24471.appspot.com",
+        messagingSenderId: "140758790880",
+        appId: "1:140758790880:web:5327de0ec284b277065685"
+    };
 
-        // Initialize Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
-            authDomain: "protfolio-24471.firebaseapp.com",
-            projectId: "protfolio-24471",
-            storageBucket: "protfolio-24471.appspot.com",
-            messagingSenderId: "140758790880",
-            appId: "1:140758790880:web:5327de0ec284b277065685"
-        };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            alert("Login successful! Redirecting to the gallery...");
 
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                alert("Login successful! Redirecting to the gallery...");
+            // Store the email in localStorage
+            localStorage.setItem('userEmail', email);
 
-                // Store the email in localStorage
-                localStorage.setItem('userEmail', email);
-
-                // Redirect to gallery.html
-                window.location.href = 'gallery.html';
-            } catch (error) {
-                console.error("Login Error: ", error.message);
-                alert("Login failed. Check email and password.");
-            }
-        });
-    </script>
-
+            // Redirect to gallery.html
+            window.location.href = 'gallery.html';
+        } catch (error) {
+            console.error("Login Error: ", error.message);
+            alert("Login failed. Check email and password.");
+        }
+    });
+</script>
 </body>
 </html>
