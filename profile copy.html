@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajith Kavinda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('bg.jpg') no-repeat center center fixed; /* Use background image */
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow: hidden; /* Prevent scroll bars */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: #2c3e50;
+            padding-top: 1px;
+            display: inherit;
+            justify-content: right;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 50px;
+            display: block;
+            font-size: 18px;
+            border-radius: 5px;
+            margin: 10px 15px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            background-color: #e94560;
+        }
+
+        .sidebar a:hover{
+            background-color: #0f3460;
+        }
+
+        /* Content (Right Side) */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .section {
+            background: #1e1e1e98;
+            margin: 1px 0;
+            padding: 20px;
+            border-style: double;
+            border-color: #2646fc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 49%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1024px) {
+            .content {
+                gap: 15px;
+            }
+
+            .section {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: row;
+                padding: 10px;
+            }
+
+            .section {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 5px;
+                gap: 10px;
+            }
+
+            .section {
+                padding: 15px;
+                margin: 10px 0;
+            }
+        }
+
+        .section h2 {
+            text-decoration: underline;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section ul, .section p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: #1a1a1a;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top Sidebar -->
+    <div class="sidebar">
+        <a href="index.html" class="active">Home</a>
+        <a href="profile.html">Profile</a>
+    </div>
+    
+    <!-- Right Content -->
+    <div class="content">
+        <!-- About me -->
+        <div style="width: 100%; font-size: 15px;" class="section">
+            <p style="text-align: center;"><strong>Professional Projects</strong><br>
+                This document includes a detailed overview of my internship project,
+                <br> along with an image that illustrates the work I completed using various computer software tools.
+                <br> Additionally, it contains other relevant information, such as the methodologies I employed, the challenges I faced during the project, and the solutions I developed.
+                <br>The project highlights my skills in software application, problem-solving, and technical communication, providing a comprehensive summary of my experience during the internship.
+            </p>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="section">
+            <p><strong>Dashboard and Churn Analysis Development</strong>
+                <br>Dashboard and churn analysis development based on sales 
+                and billing report at Dialog Axiata PLC - Internship Project
+            </p><br>
+           <!-- Button to open the modal -->
+    <button 
+        onclick="openModal()" 
+     style="padding: 20px 100px; font-size: 16px; cursor: pointer; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
+     Open Project
+    </button>
+
+    <!-- Modal -->
+<div 
+    id="modal" 
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+    <div 
+        style="background: #fff; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        
+        <!-- Scrollable image list -->
+        <div 
+            id="imageList" 
+            style="width: 100%; height: 150px; overflow-y: auto; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p1.jpg')">p1.jpg</p>
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p2.jpg')">p2.jpg</p>
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p3.jpg')">p3.jpg</p>
+                <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p4.jpg')">p1.jpg</p>
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p5.jpg')">p2.jpg</p>
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p6.jpg')">p3.jpg</p>
+            <p 
+                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
+                onclick="showImage('p7.jpg')">p3.jpg</p>
+            <!-- Add more images as needed -->
+        </div>
+
+        <!-- Container to display the selected image -->
+        <div id="imageContainer" style="text-align: center;">
+            <p style="color: gray;">Select an image to display it here.</p>
+        </div>
+
+        <!-- Close modal button -->
+        <button 
+            onclick="closeModal()" 
+            style="background: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+            Close
+        </button>
+    </div>
+</div>
+                
+        </div>
+
+        <!-- Projects 2 -->
+        <div class="section">
+            <p><strong>Dashboard and Churn Analysis Development</strong>
+                <br>Dashboard and churn analysis development based on sales 
+                and billing report at Dialog Axiata PLC - Internship Project</p>        
+        </div>
+    </div>
+    <!-- Script -->
+    <script>
+        // Open the modal
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Show the selected image
+        function showImage(imagePath) {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.innerHTML = `<img src="${imagePath}" alt="Selected Image" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 5px; margin-top: 10px;">`;
+        }
+    </script>
+
+</body>
+</html>
