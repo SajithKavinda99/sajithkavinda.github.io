@@ -1,132 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sajith Kavinda</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard & Analysis</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
 
-  /* Navigation Bar */
-  .navbar {
-    display: flex;
-    background-color: #262626;
-    padding: 15px;
-    justify-content: flex-end;
-    align-items: center;
-  }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2d2f33;
+      padding: 15px 0px;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1001;
+      justify-content: right;
+    }
 
-  .navbar a {
-    color: #e0e0e0;
-    text-decoration: none;
-    margin: 0 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    background: #e94560;
-  }
+    .navbar .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-  .navbar a:hover {
-    background: #0f3460;
-    color: #fffdfd;
-  }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 8px 25px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      background-color: crimson;
+    }
 
-  /* Heading Section */
-  .header {
-    text-align: center;
-    margin: 30px 20px;
-  }
+    .navbar a:hover {
+      background-color: #010e58;
+    }
 
-  .header h2 {
-    color: #ffa500;
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
+    /* Header */
+    .header {
+      background: linear-gradient(to bottom, #2d2f33, #3f51b5);
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      position: fixed; /* Fixed at the top */
+      top: 60px; /* Below the navbar */
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
 
-  .header p {
-    color: #e0e0e0;
-    font-size: 18px;
-    margin: 0;
-  }
+    .header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
 
-  /* Scrollable Image Section */
-  .scroll-container {
-    background-color: #2a2a2a;
-    overflow-y: auto;
-    height: 400px;
-    padding: 15px;
-    margin: 30px auto;
-    max-width: 80%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-  }
+    .header p {
+      margin: 10px 0 0;
+      font-size: 1.1rem;
+    }
 
-  .scroll-container img {
-    display: block;
-    margin: 20px auto;
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-    border: 3px solid #ffa500;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
+    /* Content adjustments to avoid overlap with fixed elements */
+    .projects {
+      max-width: 90%;
+      margin: 200px auto 40px; /* Add margin-top to avoid being hidden by fixed header and navbar */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
-  .scroll-container img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(255, 165, 0, 0.6);
-    border-color: #ff8c00;
-  }
+    .project-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
 
-  /* Footer */
-  footer {
-    background-color: #262626;
-    padding: 20px;
-    text-align: center;
-    color: #e0e0e0;
-    font-size: 16px;
-  }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
-  footer p {
-    margin: 0;
-    font-weight: bold;
-  }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
-</style>
+    .project-card .content {
+      padding: 15px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      color: #2d2f33;
+    }
+
+    .project-card p {
+      margin: 10px 0 0;
+      color: #555;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .modal .modal-content {
+      max-width: 80%;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .modal .modal-content img {
+      width: 100%;
+    }
+
+    .modal .close-btn {
+      display: block;
+      text-align: right;
+      padding: 10px;
+      background-color: #2d2f33;
+      color: white;
+      cursor: pointer;
+    }
+
+    .modal .close-btn:hover {
+      background-color: #3f51b5;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2d2f33;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+
+  <!-- Navbar -->
   <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="profile.html">Profile</a>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+    </div>
   </div>
 
-  <!-- Header Section -->
+  <!-- Header -->
   <div class="header">
-    <h2>Dashboard and Churn Analysis Development</h2>
-    <p>Dialog Axiata PLC - Internship Project</p>
+    <h1>My Professional Project</h1>
+    <p>Click on a project to view details.</p>
   </div>
 
-  <!-- Scrollable Image Section -->
-  <div class="scroll-container">
-    <img src="P1.jpg" alt="Cinque Terre">
-    <img src="P2.jpg" alt="Forest">
-    <img src="P3.jpg" alt="Northern Lights">
-    <img src="P4.jpg" alt="Mountains">
-    <img src="P5.jpg" alt="Cinque Terre">
-    <img src="P6.jpg" alt="Forest">
-    <img src="P7.jpg" alt="Northern Lights">
-    <img src="P8.jpg" alt="Mountains">
+  <!-- Projects Section -->
+  <div class="projects">
+    <div class="project-card" onclick="openModal('modal1')">
+      <img src="P1.jpg" alt="Project 1">
+      <div class="content">
+        <h3>Project 1: Dashboard & Analysis</h3>
+        <p>Dashboard and churn analysis development<br> based on sales and billing report <br>at Dialog Axiata PLC - Internship Project</p>
+      </div>
+    </div>
+    <div class="project-card" onclick="openModal('modal2')">
+      <img src="" alt="Project 2">
+      <div class="content">
+        <h3>Project 2: Another Project</h3>
+        <p>Another project.</p>
+      </div>
+    </div>
+    <div class="project-card" onclick="openModal('modal3')">
+      <img src="" alt="Project 3">
+      <div class="content">
+        <h3>Project 2: Another Project</h3>
+        <p>Another project.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- Footer Section -->
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div class="close-btn" onclick="closeModal('modal1')">Close</div>
+      <img src="P1.jpg" alt="Project 1">
+      <img src="P2.jpg" alt="Project 1">
+      <img src="P3.jpg" alt="Project 1">
+      <img src="P4.jpg" alt="Project 1">
+      <img src="P5.jpg" alt="Project 1">
+      <img src="P6.jpg" alt="Project 1">
+      <img src="P7.jpg" alt="Project 1">
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <div class="close-btn" onclick="closeModal('modal2')">Close</div>
+      <img src="P2.jpg" alt="Project 2">
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <div class="close-btn" onclick="closeModal('modal3')">Close</div>
+      <img src="P3.jpg" alt="Project 3">
+      <img src="P3a.jpg" alt="Additional Image for Project 3">
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    <p>I think you'll be happy</p>
+    <p>© 2025 Sajith Kavinda. All rights reserved.</p>
   </footer>
+
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
