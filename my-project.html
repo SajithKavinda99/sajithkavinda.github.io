@@ -61,7 +61,7 @@
         }
 
         .section {
-            background: #1e1e1e;
+            background: #1e1e1e98;
             margin: 1px 0;
             padding: 20px;
             border-style: double;
@@ -135,74 +135,77 @@
         <a href="index.html" class="active">Home</a>
         <a href="profile.html">Profile</a>
     </div>
-    <h1 style="text-align: center;">PROFESSIONAL PROJECTS</h1>
+    <h1 style="text-align: center; color: #e94560;">PROFESSIONAL PROJECTS</h1>
+
 
     <!-- Right Content -->
     <div class="content">
 
-        <!-- Project 1 -->
-        <div class="section">
-            <p><strong>Dashboard and Churn Analysis Development</strong>
-                <br>Dashboard and churn analysis development based on sales 
-                and billing report at Dialog Axiata PLC - Internship Project
-            </p><br>
-           <!-- Button to open the modal -->
+       <!-- Project 1 -->
+<div class="section">
+    <p><h3 style="color: #e94560;"><strong>Dashboard and Churn Analysis Development</h3></strong>
+        <br>Dashboard and churn analysis development based on sales 
+        and billing report at Dialog Axiata PLC - Internship Project
+    </p><br>
+    
+    <!-- Button to open the modal -->
     <button 
         onclick="openModal()" 
-     style="padding: 20px 100px; font-size: 16px; cursor: pointer; background-color: #e94560; color: white; border: none; border-radius: 5px;">
-     Open Project
+        style="padding: 12px 40px; font-size: 14px; cursor: pointer; background-color: #e94560; color: white; border: none; border-radius: 5px;">
+        Open Project
     </button>
 
     <!-- Modal -->
-<div 
-    id="modal" 
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
     <div 
-        style="background: #fff; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        id="modal" 
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center;">
         
-        <!-- Scrollable image list -->
         <div 
-            id="imageList" 
-            style="width: 100%; height: 150px; overflow-y: auto; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p1.jpg')">p1.jpg</p>
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p2.jpg')">p2.jpg</p>
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p3.jpg')">p3.jpg</p>
-                <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p4.jpg')">p1.jpg</p>
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p5.jpg')">p2.jpg</p>
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p6.jpg')">p3.jpg</p>
-            <p 
-                style="margin: 0; padding: 10px; cursor: pointer; color: blue;" 
-                onclick="showImage('p7.jpg')">p3.jpg</p>
-            <!-- Add more images as needed -->
-        </div>
+            style="background: white; padding: 15px; border-radius: 8px; width: 90%; max-width: 350px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); text-align: center;">
+            
+            <h3 style="margin-bottom: 10px; font-size: 16px;">Project Images</h3>
 
-        <!-- Container to display the selected image -->
-        <div id="imageContainer" style="text-align: center;">
-            <p style="color: gray;">Select an image to display it here.</p>
-        </div>
+            <!-- Scrollable Image Grid -->
+            <div 
+                id="imageList" 
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-height: 180px; overflow-y: auto; border-radius: 5px; padding: 8px; background-color: #f9f9f9;">
+                <img src="p1.jpg" alt="p1" onclick="showImage('p1.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+                <img src="p2.jpg" alt="p2" onclick="showImage('p2.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+                <img src="p3.jpg" alt="p3" onclick="showImage('p3.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+                <img src="p4.jpg" alt="p4" onclick="showImage('p4.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+                <img src="p5.jpg" alt="p5" onclick="showImage('p5.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+                <img src="p6.jpg" alt="p6" onclick="showImage('p6.jpg')" style="width: 100%; height: 50px; cursor: pointer; border-radius: 5px;">
+            </div>
 
-        <!-- Close modal button -->
-        <button 
-            onclick="closeModal()" 
-            style="background: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-            Close
-        </button>
+            <!-- Selected Image Display -->
+            <div id="imageContainer" style="text-align: center; padding: 8px; margin-top: 8px;">
+                <p style="color: gray; font-size: 14px;">Select an image to view</p>
+            </div>
+
+            <!-- Close Modal Button -->
+            <button 
+                onclick="closeModal()" 
+                style="background: #ff4d4d; color: white; border: none; padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 12px;">
+                Close
+            </button>
+        </div>
     </div>
 </div>
-                
-        </div>
+
+<script>
+    function openModal() {
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    function showImage(imageName) {
+        document.getElementById("imageContainer").innerHTML = `<img src="${imageName}" alt="${imageName}" style="max-width: 100%; height: auto; border-radius: 5px;">`;
+    }
+</script>
+
 
         <!-- Projects 2 -->
         <div class="section">
