@@ -238,13 +238,15 @@
 
     // Initialize Firebase
     const firebaseConfig = {
-        apiKey: "AIzaSyCi_RGW26D9izJwTkMBFk_Oo_7DQzOjBlg",
-        authDomain: "protfolio-24471.firebaseapp.com",
-        projectId: "protfolio-24471",
-        storageBucket: "protfolio-24471.appspot.com",
-        messagingSenderId: "140758790880",
-        appId: "1:140758790880:web:5327de0ec284b277065685"
-    };
+            apiKey: "AIzaSyAeDyGcXg92K-RRq11yW6rZ-t4vuAYb7Kc",
+            authDomain: "portfolio-71902.firebaseapp.com",
+            databaseURL: "https://portfolio-71902-default-rtdb.firebaseio.com", // ✅ Add this line
+            projectId: "portfolio-71902",
+            storageBucket: "portfolio-71902.appspot.com",
+            messagingSenderId: "618828442439",
+            appId: "1:618828442439:web:4fb646503ca1e8a938ba62"
+        };
+
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
