@@ -120,12 +120,43 @@
             margin: 0;
         }
 
+        /* Add a style for the search bar and button */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #e94560;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #0f3460;
+        }
+
+        /* Hide sections that don't match the search */
+        .section.hidden {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="container">
-
     <!-- Top Sidebar -->
     <div class="sidebar">
         <a href="profile.html" class="active">Profile</a>
@@ -135,85 +166,76 @@
     <img style="width: 100px; height: 100px; display: block; margin: 0 auto; border-style: groove; border-radius: 100%;" src="profile (1).png" alt="User Avatar">
     <div class="details">
         <p style="text-align: center;" id="user-email">Loading your email...</p>
-    </div>    <!-- Right Content -->
-    <div class="content">
-        
+    </div>
 
-        <!-- Crud System -->
-        <div class="section">
-            <p  style="text-align: center;"><strong>CRUD System</strong><br>This CRUD system is a desktop application developed in Java
-                 using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs). 
-                 The system allows users to perform four main operations on a dataset:
-                  Create, Read, Update, and Delete.</p>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="search-bar" class="search-input" placeholder="Search for a section..." oninput="searchSections()">
+    </div>
+
+    <!-- Right Content -->
+    <div class="content">
+        <!-- CRUD System -->
+        <div class="section" id="crud-section">
+            <p style="text-align: center;"><strong>CRUD System</strong><br>This CRUD system is a desktop application developed in Java using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs). The system allows users to perform four main operations on a dataset: Create, Read, Update, and Delete.</p>
             <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
-                <!-- Link to download the zip file, positioned in front of the image -->
-                <a href="JAVA crud system.zip" download 
-                   style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
-                   Download CRUD Management System
-                </a> 
-                
+                <a href="JAVA crud system.zip" download style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download CRUD Management System</a>
             </div>
-        
         </div>
 
-        <!-- Student management system -->
-        <div class="section">
-            <p  style="text-align: center;"><strong>Students Management System</strong><br>This Students Management system is a desktop application developed in Java
-                using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs). 
-                The system allows users to perform four main operations on a dataset:
-                 Create, Read, Update, and Delete.</p>
+        <!-- Students Management System -->
+        <div class="section" id="students-section">
+            <p style="text-align: center;"><strong>Students Management System</strong><br>This system is a desktop application developed in Java using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs). The system allows users to perform four main operations on a dataset: Create, Read, Update, and Delete.</p>
             <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
-                <!-- Link to download the zip file, positioned in front of the image -->
-                <a href="student registraton system.zip" download 
-                   style="position: absolute; top:20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
-                   Download Students Management System
-                </a>                
+                <a href="student registraton system.zip" download style="position: absolute; top:20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Students Management System</a>
             </div>
         </div>
 
         <!-- Java Calculator -->
-        <div class="section">
-            <p  style="text-align: center;"><strong>Calculator</strong><br>This Calculator is a desktop application developed in Java
-                using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs).</p>
+        <div class="section" id="calculator-section">
+            <p style="text-align: center;"><strong>Calculator</strong><br>This Calculator is a desktop application developed in Java using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs).</p>
             <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
-                <!-- Link to download the zip file, positioned in front of the image -->
-                <a href="Java_calculator.zip" download 
-                   style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
-                   Download Java Calculator
-                </a>                 
-            </div>        
+                <a href="Java_calculator.zip" download style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Java Calculator</a>
+            </div>
         </div>
 
         <!-- Simple Calculator -->
-        <div class="section">
-            <p  style="text-align: center;"><strong> Simple Calculator</strong><br>This Calculator is a desktop application developed in Java
-                using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs).</p>
+        <div class="section" id="simple-calculator-section">
+            <p style="text-align: center;"><strong>Simple Calculator</strong><br>This Calculator is a desktop application developed in Java using the NetBeans IDE and Swing for creating graphical user interfaces (GUIs).</p>
             <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
-                <!-- Link to download the zip file, positioned in front of the image -->
-                <a href="java_simple_calculator.zip" download 
-                   style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
-                   Download Java  simple Calculator
-                </a> 
-                
+                <a href="java_simple_calculator.zip" download style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Java Simple Calculator</a>
             </div>
-        
+        </div>
+
+        <!-- Translate -->
+        <div class="section" id="translate-section">
+            <p style="text-align: center;"><strong>Translate Page</strong><br>You can translate words and sentences using this web page. There are three languages available: Sinhala, English, and Tamil.</p>
+            <div style="position: relative; text-align: center; display: inline-block; width: 300px; height: 200px; margin: 10px; overflow: hidden;">
+                <a href="translate.html" style="position: absolute; top: 20%; left: 20%; transform: translate(-20%, -20%); background-color: #2d71b6; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Enter the Translate page</a>
+            </div>
         </div>
     </div>
+</div>
 
 <script>
+    const sections = document.querySelectorAll('.section'); // Get all sections
+
+    function searchSections() {
+        const query = document.getElementById('search-bar').value.toLowerCase(); // Get the search input
+
+        sections.forEach(section => {
+            const sectionText = section.textContent.toLowerCase();
+            if (sectionText.includes(query)) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    }
+
+    // Populate the email from localStorage
     const userEmail = localStorage.getItem('userEmail') || "No user logged in";
     document.getElementById('user-email').textContent = `Logged in as: ${userEmail}`;
-
-    function openTab(event, tabName) {
-        const tabs = document.querySelectorAll('.tablink');
-        const tabcontents = document.querySelectorAll('.tabcontent');
-
-        tabs.forEach(tab => tab.classList.remove('active'));
-        tabcontents.forEach(content => content.classList.remove('active'));
-
-        event.target.classList.add('active');
-        document.getElementById(tabName).classList.add('active');
-    }
 </script>
 
 </body>
