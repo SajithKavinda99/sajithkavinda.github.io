@@ -1,206 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sajith Kavinda</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color:black  ;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+    <title>Reflux HTML CSS Template</title>
+<!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      background-color: #fff;
-      border-radius: 15px;
-      display: flex;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+  </head>
 
-    /* Left Section */
-    .left-section {
-      flex: 1;
-      background: #2d71b6;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 15px 0 0 15px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .left-section img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #fff;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .left-section h2 {
-      margin-top: 20px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    /* Right Section */
-    .right-section {
-      flex: 2;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      border-radius: 0 15px 15px 0;
-    }
-
-    .right-section h1 {
-      font-size: 36px;
-      font-weight: 600;
-      color: #2d71b6;
-      margin-bottom: 10px;
-    }
-
-    .right-section p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      font-size: 16px;
-      text-decoration: none;
-      color: #fff;
-      background: #c0392b;
-      border-radius: 30px;
-      margin: 10px 0;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #c0392b;
-      transform: translateY(-3px);
-    }
-
-    /* Social Links */
-    .social-links {
-      display: flex;
-      justify-content: flex-start;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      margin: 0 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .social-links a:hover {
-      transform: scale(1.2);
-    }
-
-    .social-links img {
-      width: 40px;
-      height: 40px;
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .left-section,
-      .right-section {
-        flex: none;
-        width: 100%;
-        border-radius: 15px;
-      }
-
-      .left-section {
-        margin-bottom: 20px;
-      }
-
-      .left-section img {
-        width: 150px;
-        height: 150px;
-      }
-
-      .right-section h1 {
-        font-size: 28px;
-      }
-
-      .right-section p {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Left Section -->
-    <div class="left-section">
-      <div>
-        <img src="Staff ID Photo.png" alt="Profile Photo">
-        <h2>Welcome to My Webpage</h2>
+  <body>
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="image">
+              <a href="#"><img src="assets/images/Photo.jpg" alt="" /></a>
+            </div>
+            <div class="author-content">
+              <h4>Sajith Kalansooriya</h4>
+              <span>Business Management</span>
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li><a href="#section1">About Me</a></li>
+                <li><a href="#section2">Education</a></li>
+                <li><a href="#section5">Professional Skills</a></li>
+                <li><a href="#section3">My Work</a></li>
+                <li><a href="#section4">Contact Me</a></li>
+              </ul>
+            </nav>
+            <div class="social-network">
+              <ul class="soial-icons">
+                <li>
+                  <a href="https://www.facebook.com/sajith.kavinda.353?mibextid=ZbWKwL"
+                    ><i class="fa fa-facebook"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="https://github.com/SajithKavinda99"><i class="fa fa-github"></i></a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/sajith-kavinda-aa0102298"><i class="fa fa-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="copyright-text">
+              <p>Copyright 2019 Reflux Design</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <section class="section about-me" data-section="section1">
+        <div class="container">
+          <div class="section-heading">
+            <h2>About Me</h2>
+            <div class="line-dec"></div>
+            <span
+              >Sajith kavinda kalansooriya, A follower of the job seeking pool. Prefers to spend time with the
+              environment and try to use that time productively. When a responsibility comes to me, I try my best
+               to full that responsibility correctly. I can share my knowledge and experience with others and work
+              collaboratively. I try to use all my strengths effectively.</span
+            >
+          </div>
+          <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-image">
+                  <img src="assets/images/experience.png" alt="" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-text">
+                  <h4>Professional Experiences and project</h4>
+                  <p>
+                    Showcase a comprehensive collection of my most significant projects and experience,
+                     highlighting key achievements and contributions from both my professional career and academic journey.
+                  </p>
+                  <div class="white-button">
+                    <a href="project-and-experience.html">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-text">
+                  <h4>Gallery</h4>
+                  <p>
+                    Log in to my gallery to explore a wide range of software and web applications. 
+                    Many features are designed specifically for students, while others cater to a broader audience.
+                     Enjoy seamless access to essential tools and resources tailored to your needs.
+                  </p>
+                  <div class="white-button">
+                    <a href="login.html">Login</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-image">
+                  <img src="assets/images/gallery.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section my-services" data-section="section2">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Education Qualification?</h2>
+            <div class="line-dec"></div>
+            <span
+              >I have pursued my academic journey with dedication, acquiring valuable knowledge and skills.
+               My educational background has equipped me with the expertise to adapt to diverse challenges and
+                continuously grow in my field.</span
+            >
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>Studing Higher Diploma</h4>
+                <p>
+                  Studing Higher Diploma in Global Hospitality, Tourism and Event Management at TEG INTERNATIONAL COLLEGE in Singapore.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>B.Sc. in Management</h4>
+                <p>
+                  Course B.Sc. in Management/Bachelor of Science General in Management at Eastern university of Sri Lanka.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>Foundations of Project Management</h4>
+                <p>
+                  Foundations of Project Management at University of Moratuwa in Sri Lanka.<br><br>
+                  Verification Code : VE4DCfAGMg<br>
+                  Verufication Url : https://open.uom.lk/verify
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>Diploma of Microsoft office</h4>
+                <p>
+                  Diploma of Microsoft office , excel , PowerPoint , word at vision tec Internatinal-kakirawa in Sri Lanka<br><br><br><br>
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="section my-services" data-section="section5">
+        <div class="container">
+          <div class="section-heading">
+            <h2>PROFESSIONAL SKILLS?</h2>
+            <div class="line-dec"></div>
+            <span
+              >I possess the abilities and expertise that enable me to perform effectively in a professional environment.
+               My skill set includes technical knowledge, 
+              problem-solving, communication, teamwork, and adaptability—essential qualities for career success.</span
+            >
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>Prasentation Skills</h4>
+                <p>
+                  Phasellus non convallis dolor. Integer tempor hendrerit arcu
+                  at bibendum. Sed ac ante non metus vehicula congue quis eget
+                  eros.<br><br>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="second-service-icon service-icon"></div>
+                <h4>Computer Knowledge and Database Management</h4>
+                <p>
+                  Studied Java Advanced Programming language and Rational database management at Evotech institute in Sri Lanka.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="third-service-icon service-icon"></div>
+                <h4>Project Management</h4>
+                <p>
+                  Integer suscipit condimentum aliquet. Nam quis risus metus.
+                  Nullam faucibus quam eget arcu pretium tincidunt. Nam libero
+                  dui.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="fourth-service-icon service-icon"></div>
+                <h4>Sales Target Management</h4>
+                <p>
+                  Vivamus et dui a massa venenatis fringilla. Proin lacus massa,
+                  eleifend sed fermentum in, dignissim vel metus. Nunc accumsan
+                  leo nec felis porttitor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>My Work</h2>
+            <div class="line-dec"></div>
+            <span
+              >Aenean sollicitudin ex mauris, lobortis lobortis diam euismod sit
+              amet. Duis ac elit vulputate, lobortis arcu quis, vehicula
+              mauris.</span
+            >
+          </div>
+          <div class="row">
+            <div class="isotope-wrapper">
+              <form class="isotope-toolbar">
+                <label
+                  ><input
+                    type="radio"
+                    data-type="*"
+                    checked=""
+                    name="isotope-filter"
+                  />
+                  <span>all</span></label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    data-type="people"
+                    name="isotope-filter"
+                  />
+                  <span>people</span></label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    data-type="nature"
+                    name="isotope-filter"
+                  />
+                  <span>nature</span></label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    data-type="animals"
+                    name="isotope-filter"
+                  />
+                  <span>animals</span></label
+                >
+              </form>
+              <div class="isotope-box">
+                <div class="isotope-item" data-type="nature">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-01.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-01.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>First Title</h4>
+                      <span>free to use our template</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="people">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-02.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-02.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Second Title</h4>
+                      <span>please tell your friends</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="animals">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-03.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-03.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Item Third</h4>
+                      <span>customize anything</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="people">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-04.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-04.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Item Fourth</h4>
+                      <span>Re-distribution not allowed</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="nature">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-05.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-05.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Fifth Awesome</h4>
+                      <span>Ut sollicitudin risus</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="animals">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-06.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-06.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Awesome Sixth</h4>
+                      <span>Donec eget massa ante</span>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-me" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Contact Me</h2>
+            <div class="line-dec"></div>
+            <span
+              >Fusce eget nibh nec justo interdum condimentum. Morbi justo ex,
+              efficitur at ante ac, tincidunt maximus ligula. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.</span
+            >
+          </div>
+          <div class="row">
+            <div class="right-content">
+              <div class="container">
+                <form id="contact" action="" method="post">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="name"
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="Your name..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="email"
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          placeholder="Your email..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="subject"
+                          type="text"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Subject..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <textarea
+                          name="message"
+                          rows="6"
+                          class="form-control"
+                          id="message"
+                          placeholder="Your message..."
+                          required=""
+                        ></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="button">
+                          Send Message
+                        </button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <!-- Right Section -->
-    <div class="right-section">
-      <h1>Hi, I'm Sajith Kavinda</h1>
-      <p><strong>Business Management</strong><br>One year of expertise in the business sector.</p>
-      <p>
-        I am Sajith Kavinda Kalansooriya, a professional eager to make an impact. I love spending time in nature and turning it into something productive. I take my responsibilities seriously, collaborate effectively with teams, and share my knowledge to inspire growth.
-      </p>
-      <div>
-        <a class="btn" href="profile.html">View Profile</a>
-        <a class="btn" href="login.html">View Gallery</a>
-      </div>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/sajith-kavinda-aa0102298">
-          <img src="icons8-linkedin-48.png" alt="LinkedIn">
-        </a>
-        <a href="https://github.com/SajithKavinda99">
-          <img src="github.png" alt="GitHub">
-        </a>
-        <a href="https://www.facebook.com/sajith.kavinda.353?mibextid=ZbWKwL">
-          <img src="icons8-fb-48.png" alt="Facebook">
-        </a>
-        <a href="https://www.gmail.com">
-          <img src="mail.png" alt="Email">
-        </a>
-      </div>
-    </div>
-  </div>
-</body>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
+
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function() {
+        checkSection();
+      });
+    </script>
+  </body>
 </html>
