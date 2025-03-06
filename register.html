@@ -224,6 +224,7 @@
                 <input id="name" type="text" name="fullname" placeholder="Firstname and Lastname" required aria-label="Full Name">
                 <input id="password" type="password" name="password" placeholder="Password" minlength="6" required aria-label="Password">
                 <input id="email" type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
+                <input id="phone" type="tel" name="phone" placeholder="Telephone Number" required aria-label="Telephone Number" pattern="[0-9+()\- ]*" title="Enter a valid phone number">
                 <select id="country" style="background-color: #ffffff;" name="country" required aria-label="Country">
                     <option value="" disabled selected>Select Country</option>
                     <option value="afghanistan">Afghanistan</option>
@@ -462,6 +463,7 @@
         const name = document.getElementById("name").value;
         const password = document.getElementById("password").value;
         const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
         const country = document.getElementById("country").value;
     
         try {
@@ -508,7 +510,7 @@
             await set(userRef, {
                 name,
                 email,
-                password,
+                phone,
                 country
             });
     
