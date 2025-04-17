@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sinhala to English Tense Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #eef6fb;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .pause-btn {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #sinhalaText {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 80%;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .score-board {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        #timer {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        #restartBtn {
+            display: none;
+            margin-top: 20px;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <button class="pause-btn" onclick="togglePause()">⏸️ Pause</button>
+        <button class="logout-btn" onclick="logout()">🔓 Logout</button>
+    </div>
+
+    <div class="card">
+        <h2>Translate the Sinhala Tense</h2>
+        <p id="sinhalaText">Loading...</p>
+        <input type="text" id="userInput" placeholder="Type the English tense..." onkeydown="handleEnter(event)" />
+        <br>
+        <button onclick="checkAnswer()">Submit</button>
+        <div class="feedback" id="feedback"></div>
+        <div class="score-board">
+            Score: <span id="score">0</span> | Time Left: <span id="timer">20</span> sec
+        </div>
+        <button id="restartBtn" onclick="restartGame()">🔁 Restart</button>
+    </div>
+
+    <script>
+        const tenses = [
+            { sinhala: "අපි රස්තියාදුවේ යනවා", english: "We are roaming around" },
+            { sinhala: "අපි වෙළඳපළට යමින් ඉන්නවා", english: "We are popping the super market" },
+            { sinhala: "අමුතු", english: "Stranght / weird" },
+            { sinhala: "අරගෙන කන්න / බෙදාගෙන කන්න", english: "Help yourself" },
+            { sinhala: "ආචාරශීලීව ඇණවුමක් කරන විට", english: "Could I have or may I have" },
+            { sinhala: "උත්සවයක් පවත්වන්න", english: "Hold a festival" },
+            { sinhala: "ඔයා කාලා බලනවද ඒක", english: "Have you try it" },
+            { sinhala: "ඔයාට දුම්බීම තහනම් මෙතන", english: "You mustn’t smoke here" },
+            { sinhala: "කටට කෙලඋනනවා", english: "Mouthwatering" },
+            { sinhala: "චාටර් වුනා", english: "Got tarnished" },
+            { sinhala: "චාටර් වෙනවා", english: "Get tarnished" },
+            { sinhala: "තරමක් ගනන්", english: "Quite expensive" },
+            { sinhala: "තහනම්", english: "Mustn’t" },
+            { sinhala: "බෝට්ටුවට නගින්න", english: "Jump on the boat or hop on the boat" },
+            { sinhala: "මම අසනීපෙන් සිටියේ", english: "I was sick" },
+            { sinhala: "මම කාර්ය්‍යබහුලයි", english: "I have got my hands full" },
+            { sinhala: "මම කැමතියි ඒකට", english: "I love it" },
+            { sinhala: "මම වෙනස් වෙනවා අවස්ථාවට අනුව", english: "I am change according to occasion" },
+            { sinhala: "මම පුරුදුවෙලා හිටියා", english: "I used to run every morning" },
+            { sinhala: "ඇය මාව දාලා ගියා", english: "She has leave me" },
+            { sinhala: "ඇදුමක් ඇඳගන්න", english: "Put a dress on" },
+            { sinhala: "සපත්තු දාගන්න", english: "Put your shoes on" },
+            { sinhala: "ඇඳගන්න", english: "Put on" },
+            { sinhala: "කටකතාවක් තියනවා තරඟය පාවාදුන්නා කියලා", english: "It is a rumor that, the match is fixed" },
+            { sinhala: "දේශපාලකයන් පස්සේ යන අය සහා කඩේ යන අය", english: "Bootlickers" },
+            { sinhala: "ඔයා පීසා කාලා තියනවද?", english: "Have you yet to eat pizza" }
+        ];
+
+
+        let currentIndex = 0;
+        let score = 0;
+        let timeLeft = 20;
+        let timer;
+        let isPaused = false;
+
+        const sinhalaText = document.getElementById("sinhalaText");
+        const userInput = document.getElementById("userInput");
+        const feedback = document.getElementById("feedback");
+        const scoreEl = document.getElementById("score");
+        const timerEl = document.getElementById("timer");
+        const restartBtn = document.getElementById("restartBtn");
+
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 20;
+            timerEl.textContent = timeLeft;
+
+            timer = setInterval(() => {
+                if (!isPaused) {
+                    timeLeft--;
+                    timerEl.textContent = timeLeft;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        feedback.textContent = "⏰ Time's up!";
+                        setTimeout(nextQuestion, 1000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function showQuestion() {
+            if (currentIndex < tenses.length) {
+                sinhalaText.textContent = tenses[currentIndex].sinhala;
+                userInput.value = '';
+                userInput.disabled = false;
+                feedback.textContent = '';
+                startTimer();
+            } else {
+                endGame();
+            }
+        }
+
+        function checkAnswer() {
+            const userAns = userInput.value.trim().toLowerCase();
+            const correctAns = tenses[currentIndex].english.toLowerCase();
+
+            if (userAns === correctAns) {
+                score++;
+                feedback.textContent = "✅ Correct!";
+            } else {
+                feedback.textContent = "❌ Incorrect. Correct answer: " + tenses[currentIndex].english;
+            }
+
+            scoreEl.textContent = score;
+            clearInterval(timer);
+            setTimeout(nextQuestion, 1000);
+        }
+
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            showQuestion();
+        }
+
+        function endGame() {
+            sinhalaText.textContent = "🎉 Game Over!";
+            userInput.style.display = "none";
+            document.querySelector("button").style.display = "none";
+            restartBtn.style.display = "inline-block";
+            feedback.innerHTML = `🏁 Final Score: ${score} / ${tenses.length}`;
+            clearInterval(timer);
+        }
+
+        function restartGame() {
+            currentIndex = 0;
+            score = 0;
+            scoreEl.textContent = score;
+            userInput.style.display = "inline-block";
+            userInput.disabled = false;
+            document.querySelector("button").style.display = "inline-block";
+            restartBtn.style.display = "none";
+            showQuestion();
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            if (isPaused) {
+                userInput.disabled = true;
+                feedback.textContent = "⏸️ Game Paused";
+            } else {
+                userInput.disabled = false;
+                feedback.textContent = "";
+            }
+        }
+
+        function logout() {
+            window.location.href = "gallery.html";
+        }
+
+        // Start game
+        showQuestion();
+    </script>
+</body>
+
+</html>
