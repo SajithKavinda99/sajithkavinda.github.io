@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sajith Kalansooriya - Account Details</title>
+  <link href="assets/img/Photo.jpg" rel="icon" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    html,
+    body {
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Lato', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 280px;
+      background-color: #1f1f1f;
+      height: 100vh;
+      padding: 30px 20px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar img {
+      width: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      align-self: center;
+    }
+
+    .sidebar h3 {
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .sidebar .social-icons {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .sidebar .social-icons a {
+      margin: 0 8px;
+      color: #aaa;
+    }
+
+    .logout-btn {
+      background-color: red;
+      color: white;
+      margin-top: 20px;
+      padding: 10px 15px;
+      text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .content {
+      margin-left: 280px;
+      padding: 40px 20px;
+      width: calc(100% - 280px);
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    .form-label {
+      color: #ddd;
+      font-size: 25px;
+    }
+
+    .form-text {
+      color: #bbb;
+      font-size: 20px;
+    }
+
+    .delete-btn {
+      margin-top: 40px;
+      padding: 12px 20px;
+      font-size: 18px;
+      border: none;
+      background-color: #ff4444;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 200px;
+    }
+
+    .delete-btn:hover {
+      background-color: #dd2222;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .sidebar img {
+        margin-bottom: 10px;
+      }
+
+      .sidebar h3 {
+        margin-bottom: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0;
+        align-items: center;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .logout-btn {
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .card .row {
+        flex-direction: column;
+      }
+
+      .card .col-md-6 {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <div>
+      <img src="assets/img/loading.gif" alt="Profile">
+      <h3 id="user-email">Loading...</h3>
+    </div>
+    <a href="index.html" class="logout-btn">Log Out</a>
+
+    <div class="nav-links">
+      <a href="gallery.html"><i class="fas fa-image me-2"></i>Gallery</a>
+      <a href="account-details.html"><i class="fas fa-user me-2"></i>Account Details</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <section id="account-details">
+      <h2 class="mb-4">Account Details</h2>
+      <p class="description mb-4">Edit your profile information below.</p>
+      <div class="card bg-dark text-light shadow">
+        <div class="row g-4 container-fluid m-0 p-0" id="user-details">
+          <p style="font-size: 20px;">Loading user info...</p>
+        </div>
+        <button class="delete-btn" id="delete-account-btn">Delete Account</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, deleteUser } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+    import { getDatabase, ref, get, update, remove } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAeDyGcXg92K-RRq11yW6rZ-t4vuAYb7Kc",
+      authDomain: "portfolio-71902.firebaseapp.com",
+      databaseURL: "https://portfolio-71902-default-rtdb.firebaseio.com",
+      projectId: "portfolio-71902",
+      storageBucket: "portfolio-71902.appspot.com",
+      messagingSenderId: "618828442439",
+      appId: "1:618828442439:web:4fb646503ca1e8a938ba62"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    function createEditableField(label, key, value, userRefPath) {
+      return `
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="${key}-input" class="form-label">${label}</label>
+            <p id="${key}-display" class="form-text mb-2">${value || "N/A"}</p>
+            <div class="input-group">
+              <input type="text" id="${key}-input" class="form-control" placeholder="Enter new ${label.toLowerCase()}" />
+              <button class="btn btn-outline-light" onclick="updateField('${key}', '${userRefPath}')">Update</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    window.updateField = (key, userRefPath) => {
+      const input = document.getElementById(`${key}-input`);
+      const newValue = input.value.trim();
+      if (newValue.length === 0) {
+        alert("Please enter a valid value.");
+        return;
+      }
+
+      const userRef = ref(db, userRefPath);
+      update(userRef, { [key]: newValue })
+        .then(() => {
+          document.getElementById(`${key}-display`).textContent = newValue;
+          input.value = "";
+          alert(`${key.charAt(0).toUpperCase() + key.slice(1)} updated successfully.`);
+        })
+        .catch((error) => {
+          console.error(`Error updating ${key}:`, error);
+          alert(`Failed to update ${key}.`);
+        });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        const email = user.email;
+        const userRefPath = 'users/' + uid;
+        const userRef = ref(db, userRefPath);
+
+        document.getElementById('user-email').textContent = "Logged in as: " + email;
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            const userCard = document.getElementById("user-details");
+            userCard.innerHTML = `
+              ${createEditableField("Name", "name", data.name, userRefPath)}
+              ${createEditableField("Phone", "phone", data.phone, userRefPath)}
+              ${createEditableField("Country", "country", data.country, userRefPath)}
+            `;
+          } else {
+            document.getElementById("user-details").innerHTML = "<p style='color:red;'>User data not found.</p>";
+          }
+        }).catch((error) => {
+          console.error("Error getting user data:", error);
+          document.getElementById("user-details").innerHTML = "<p style='color:red;'>Failed to load user data.</p>";
+        });
+
+        document.getElementById("delete-account-btn").addEventListener("click", () => {
+          const confirmDelete = confirm("Are you sure you want to delete your account? This cannot be undone.");
+          if (!confirmDelete) return;
+
+          remove(ref(db, `users/${uid}`))
+            .then(() => {
+              return deleteUser(user);
+            })
+            .then(() => {
+              alert("Account deleted successfully.");
+              window.location.href = "index.html";
+            })
+            .catch((error) => {
+              console.error("Error deleting account:", error);
+              alert("Failed to delete account. You may need to re-authenticate.");
+            });
+        });
+
+      } else {
+        document.getElementById("user-email").textContent = "Not logged in";
+        document.getElementById("user-details").innerHTML = "<p style='color:red;'>Please log in to see your details.</p>";
+      }
+    });
+  </script>
+</body>
+
+</html>
