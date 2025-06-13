@@ -2,293 +2,325 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student LMS Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+        /* Reset & base */
         * {
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #ece9f1, #f8f7fc);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2c3e50;
+            background: #0f1424;
+            color: #eee;
+            line-height: 1.6;
         }
 
-        .container {
-            width: 95%;
-            max-width: 1350px;
-            min-height: 700px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
-        header {
-            background: #5e3693;
-            padding: 20px 30px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 26px;
-            font-weight: 700;
-        }
-
-        #logoutBtn {
-            background-color: #e74c3c;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        #logoutBtn:hover {
-            background-color: #c0392b;
-        }
-
-        main {
-            flex-grow: 1;
-            padding: 40px 60px;
-        }
-
-        .login-section {
-            max-width: 400px;
-            margin: auto;
+        /* Header */
+        .header {
+            background: #1abc9c;
+            padding: 30px 20px;
             text-align: center;
+            color: #fff;
+            box-shadow: 0 0 10px #1abc9c;
         }
 
-        .login-section img {
-            max-width: 130px;
-            border-radius: 50%;
-            border: 4px solid #764ba2;
-            margin-bottom: 25px;
-        }
-
-        .login-section h2 {
-            margin-bottom: 20px;
-            color: #5e3693;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input {
-            padding: 14px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-color: #764ba2;
-        }
-
-        button.login-btn {
-            background-color: #764ba2;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button.login-btn:hover {
-            background-color: #5e3693;
-        }
-
-        .dashboard {
-            display: none;
-        }
-
-        .dashboard h2 {
-            color: #5e3693;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .dashboard p {
-            font-size: 18px;
-            color: #4b2f81;
-            margin-bottom: 30px;
-        }
-
-        .resources {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #f3efff;
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h4 {
-            margin: 0 0 10px;
-            font-size: 18px;
-            color: #5e3693;
-        }
-
-        .card p {
+        .header h1 {
             margin: 0;
-            font-size: 15px;
-            color: #6c5aa8;
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .card a {
-            color: #4b2f81;
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.85;
+        }
+
+        /* Navigation sidebar */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Sidebar styling */
+        .side {
+            flex: 1 1 280px;
+            background: #16212a;
+            padding: 25px 20px;
+            box-shadow: inset -5px 0 8px rgba(26, 188, 156, 0.3);
+            border-right: 2px solid #1abc9c;
+        }
+
+        .side h2 {
+            margin-top: 0;
+            color: #1abc9c;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 8px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: url('https://i.pravatar.cc/120') center/cover no-repeat;
+            margin-bottom: 15px;
+            border: 3px solid #1abc9c;
+            box-shadow: 0 0 10px #1abc9c;
+        }
+
+        .side p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+        }
+
+        .nav-links a {
+            color: #1abc9c;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+            box-shadow: 0 0 6px rgba(26, 188, 156, 0.6);
         }
 
-        .card a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            background: #1abc9c;
+            color: #0f1424;
+            box-shadow: 0 0 12px #16a085;
         }
 
-        @media (max-width: 768px) {
-            main {
-                padding: 25px;
+        /* Main content */
+        .main {
+            flex: 3 1 700px;
+            background: #1a202c;
+            padding: 30px 25px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 20px rgba(26, 188, 156, 0.2);
+            border-radius: 0 15px 15px 0;
+        }
+
+        .main h2 {
+            font-size: 2rem;
+            color: #1abc9c;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+        }
+
+        .course-section,
+        .announcements {
+            margin-bottom: 35px;
+        }
+
+        /* Course cards */
+        .course-card {
+            background: #16212a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(26, 188, 156, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            box-shadow: 0 0 25px #1abc9c;
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+            color: #1abc9c;
+        }
+
+        .course-card p {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: #1abc9c;
+            color: #0f1424;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px #1abc9c;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #16a085;
+            box-shadow: 0 0 25px #16a085;
+            color: #fff;
+        }
+
+        /* Announcements */
+        .announcement-item {
+            background: #16212a;
+            border-left: 5px solid #1abc9c;
+            margin-bottom: 15px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(26, 188, 156, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .announcement-item:hover {
+            background: #1a2736;
+        }
+
+        .announcement-item h4 {
+            margin: 0 0 5px;
+            color: #1abc9c;
+        }
+
+        .announcement-item p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #16212a;
+            text-align: center;
+            color: #bbb;
+            padding: 15px;
+            box-shadow: inset 0 10px 20px rgba(26, 188, 156, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .row {
+                flex-direction: column;
+                min-height: auto;
             }
 
-            header h1 {
-                font-size: 20px;
+            .side,
+            .main {
+                flex: 1 1 100%;
+                border-radius: 0;
+                box-shadow: none;
+                border-right: none;
+            }
+
+            .side {
+                border-bottom: 2px solid #1abc9c;
+            }
+
+            .main {
+                padding: 20px 15px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>9 Grade LMS Dashboard</h1>
-            <a href="lms.html"><button id="logoutBtn" onclick="logout()">Logout</button></a>
-        </header>
-        <main>
-            <div class="login-section" id="loginSection">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Student Icon">
-                <h2>Login to your Account</h2>
-                <div class="form-group">
-                    <input type="text" id="username" placeholder="Username" />
-                    <input type="password" id="password" placeholder="Password" />
-                    <button class="login-btn" onclick="handleLogin()">Login</button>
-                </div>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <h1>learning management system</h1>
+        <p>Welcome to your learning dashboard</p>
+    </header>
 
-            <div class="dashboard" id="dashboard">
-                <h2>Welcome, <span id="userDisplay"></span>!</h2>
-                <p>Here are your downloadable resources:</p>
-                <div class="resources">
-                    <div class="card">
-                        <h4><a href="ICT.pdf" target="_blank" download>ICT Class Notes</a></h4>
-                        <p>Download your ICT materials.</p>
-                    </div>
-                    <div class="card">
-                        <h4><a href="Maths.pdf" target="_blank" download>Maths Worksheet</a></h4>
-                        <p>Download your Maths assignments.</p>
-                    </div>
-                    <div class="card">
-                        <h4><a href="Science.pdf" target="_blank" download>Science Reading</a></h4>
-                        <p>Download your Science reading materials.</p>
-                    </div>
-                    <div class="card">
-                        <h4><a href="English.pdf" target="_blank" download>English Reading</a></h4>
-                        <p>Download your English materials.</p>
-                    </div>
-                    <div class="card">
-                        <h4><a href="History.pdf" target="_blank" download>History Notes</a></h4>
-                        <p>Download your History materials.</p>
-                    </div>
+    <!-- Page Content -->
+    <div class="row">
+        <!-- Sidebar -->
+        <aside class="side">
+            <h2>Profile</h2>
+            <div class="profile-pic"></div>
+            <p><strong>Name:</strong> <span id="profileName">Loading...</span></p>
+            <p><strong>Grade:</strong> 9</p>
+
+            <ul class="nav-links">
+                <li><a href="lms.html">Log in Page</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+
+            <!-- Courses -->
+            <section class="course-section">
+                <h2>My Courses</h2>
+
+                <div class="course-card">
+                    <h3>Mathematics - Grade 10</h3>
+                    <p>Instructor: Mrs. Smith</p>
+                    <p>Explore lessons, assignments, and quizzes.</p>
+                    <a href="#" class="btn">View Course</a>
                 </div>
-            </div>
+
+                <div class="course-card">
+                    <h3>Science - Grade 10</h3>
+                    <p>Instructor: Mr. Johnson</p>
+                    <p>Interactive lessons and lab assignments.</p>
+                    <a href="#" class="btn">View Course</a>
+                </div>
+
+                <div class="course-card">
+                    <h3>History - Grade 10</h3>
+                    <p>Instructor: Ms. Lee</p>
+                    <p>Historical timelines and essay tasks.</p>
+                    <a href="#" class="btn">View Course</a>
+                </div>
+            </section>
         </main>
     </div>
 
-    <script>
-        const validUsers = [
-            { username: "student9", password: "pass9" },
-            { username: "student2", password: "pass2" },
-            { username: "student3", password: "pass3" }
-        ];
-
-        function handleLogin() {
-            const user = document.getElementById("username").value.trim();
-            const pass = document.getElementById("password").value.trim();
-            const match = validUsers.find(u => u.username === user && u.password === pass);
-
-            if (match) {
-                localStorage.setItem("savedUser", user);
-                showDashboard(user);
-            } else {
-                alert("Invalid username or password.");
-            }
-        }
-
-        function showDashboard(user) {
-            document.getElementById("loginSection").style.display = "none";
-            document.getElementById("dashboard").style.display = "block";
-            document.getElementById("userDisplay").innerText = user;
-        }
-
-        function logout() {
-            localStorage.removeItem("savedUser");
-            location.reload();
-        }
-
-        window.onload = () => {
-            const savedUser = localStorage.getItem("savedUser");
-            if (savedUser) {
-                showDashboard(savedUser);
-            }
-        };
-
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (
-                e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) ||
-                (e.ctrlKey && e.key === 'U')
-            ) {
-                e.preventDefault();
-                alert("Viewing source or developer tools is disabled.");
-            }
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2024 Student LMS. All rights reserved.
+    </footer>
 </body>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedUser = localStorage.getItem('savedUser');
+        const profileNameSpan = document.getElementById('profileName');
+        if (savedUser) {
+            try {
+                const user = JSON.parse(savedUser);
+                if (user && user.username) {
+                    profileNameSpan.textContent = user.username;
+                } else {
+                    profileNameSpan.textContent = 'Unknown User';
+                }
+            } catch (e) {
+                profileNameSpan.textContent = 'Unknown User';
+            }
+        } else {
+            profileNameSpan.textContent = 'Guest';
+        }
+    });
+</script>s
 
 </html>

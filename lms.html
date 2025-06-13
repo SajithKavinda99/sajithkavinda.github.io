@@ -3,378 +3,383 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LMS - Neon Dark Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMS Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        :root {
+            --bg-dark: #0b0a1a;
+            --neon-blue: #39f;
+            --neon-pink: #ff2d95;
+            --neon-purple: #9b59b6;
+            --neon-cyan: #00fff7;
+            --input-bg: #1a1830;
+            --input-border: #292647;
+            --text-light: #ddd;
+            --shadow-neon: rgba(57, 63, 252, 0.7);
+            --shadow-pink: rgba(255, 45, 149, 0.7);
+            --transition: 0.3s ease;
+        }
 
-        /* Reset */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0f0f1a;
-            color: #cfcfcf;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navbar */
-        header {
-            background: #14142b;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 12px #4b27a6cc;
-            position: relative;
-            z-index: 10;
-        }
-
-        header h1 {
-            color: #a27cff;
-            font-weight: 700;
-            font-size: 1.9rem;
-            letter-spacing: 0.05em;
-            user-select: none;
-        }
-
-        nav.topnav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        nav.topnav a.logout-btn {
-            background: #7a52ff;
-            padding: 0.5rem 1.3rem;
-            border-radius: 25px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 0 12px #a57fffcc;
-            transition: background-color 0.3s ease;
-            user-select: none;
-            white-space: nowrap;
-        }
-
-        nav.topnav a.logout-btn:hover,
-        nav.topnav a.logout-btn:focus-visible {
-            background: #986aff;
-            outline: none;
-            box-shadow: 0 0 18px #c2aaffcc;
-        }
-
-        /* Hamburger for mobile */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            width: 25px;
-        }
-
-        .hamburger span {
-            height: 3px;
-            background: #a27cff;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger:focus-visible {
-            outline: 2px solid #a27cff;
-            outline-offset: 4px;
-        }
-
-        /* Grade cards container */
-        main {
-            flex-grow: 1;
-            padding: 2rem 2.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .grades-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1.7rem;
-            margin-bottom: 3rem;
-        }
-
-        .grade-card {
-            background: #1a1933;
-            border: 2px solid #6a4fff;
-            border-radius: 15px;
-            padding: 1.6rem 1rem;
-            text-align: center;
-            font-weight: 700;
-            color: #b49aff;
-            font-size: 1.25rem;
-            user-select: none;
-            box-shadow: 0 0 12px #6a4fff44;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
+            height: 100vh;
+            background: var(--bg-dark);
+            color: var(--text-light);
             display: flex;
             justify-content: center;
             align-items: center;
-            text-decoration: none;
-            border-width: 2px;
+            overflow: hidden;
         }
 
-        .grade-card:hover,
-        .grade-card:focus-visible {
-            border-color: #d9bfff;
-            box-shadow: 0 0 25px #a186ffcc;
-            transform: translateY(-6px) scale(1.05);
-            outline: none;
-            color: #d9bfff;
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            max-width: 1200px;
+            height: 100vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--shadow-neon);
         }
 
-        /* Section title */
-        h2.section-title {
-            color: #9c80ff;
-            font-weight: 700;
-            font-size: 1.8rem;
-            margin-bottom: 1.8rem;
-            letter-spacing: 0.05em;
-            user-select: none;
+        .login-section,
+        .info-section {
+            overflow-y: auto;
         }
 
-        /* Cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .card {
-            background: #201f3a;
-            border-radius: 12px;
-            padding: 1.8rem 2rem;
-            box-shadow: 0 5px 20px #6a4fff33;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            user-select: none;
-            cursor: default;
+        .login-section {
+            flex: 1;
+            background: linear-gradient(135deg, #110f28 0%, #1e1b44 100%);
             display: flex;
             flex-direction: column;
-        }
-
-        .card:hover,
-        .card:focus-visible {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 30px #6a4fffaa;
-            outline: none;
-        }
-
-        .card h3 {
-            font-weight: 700;
-            font-size: 1.35rem;
-            color: #b49aff;
-            margin-bottom: 0.3rem;
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            padding: 40px 30px;
+            position: relative;
+            border-right: 3px solid var(--neon-purple);
+            box-shadow: inset 0 0 15px var(--neon-purple);
         }
 
-        .card h4 {
+        .login-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            box-shadow: 0 0 50px var(--neon-purple);
+            pointer-events: none;
+            opacity: 0.3;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.25;
+                box-shadow: 0 0 30px var(--neon-purple);
+            }
+
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 50px var(--neon-purple);
+            }
+        }
+
+        .login-section h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        form {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        input {
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            border-radius: 12px;
+            padding: 14px 20px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        input:focus {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 1.1rem;
+            color: var(--neon-pink);
+            cursor: pointer;
             font-weight: 600;
-            font-size: 1rem;
-            color: #9982cc;
-            margin-bottom: 1rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: 0 0 8px var(--neon-pink);
         }
 
-        .card p {
-            flex-grow: 1;
-            color: #ccc;
-            line-height: 1.5;
+        button:hover {
+            background: var(--neon-pink);
+            color: #111;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .btn-clear {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .btn-clear:hover {
+            background: var(--neon-blue);
+            color: #111;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .forgot-link {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-link:hover {
+            color: var(--neon-pink);
+            text-decoration: underline;
+        }
+
+        .info-section {
+            flex: 1.4;
+            background: linear-gradient(135deg, #1c1b38 0%, #2a2752 100%);
+            padding: 60px 40px;
+            color: var(--neon-cyan);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-left: 3px solid var(--neon-cyan);
+            box-shadow: inset 0 0 50px var(--neon-cyan);
+        }
+
+        .info-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .info-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: #a3f0f4;
+            text-shadow: 0 0 5px #00fff7aa;
+        }
+
+        .tech-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-card {
+            background: #131225;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+            color: #c6ffff;
+            transition: var(--transition);
+        }
+
+        .tech-card:hover {
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .tech-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .tech-card p {
             font-size: 0.95rem;
+            color: #b6f5ffcc;
+            line-height: 1.4;
         }
 
-        /* Footer */
-        footer {
-            background: #14142b;
-            padding: 1rem 0;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #888;
-            box-shadow: inset 0 1px 0 #6a4fff44;
-            user-select: none;
+        .info-section::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -150px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, var(--neon-pink) 15%, transparent 70%);
+            filter: blur(100px);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
         }
 
-        /* Responsive */
-
-        @media (max-width: 850px) {
-            main {
-                padding: 1.5rem 1.5rem 3rem;
-                max-width: 100%;
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
             }
 
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            100% {
+                transform: rotate(360deg);
             }
         }
 
-        @media (max-width: 600px) {
-            header {
-                padding: 1rem 1.5rem;
+        @media (max-width: 900px) {
+            body {
+                align-items: flex-start;
+                overflow-y: auto;
             }
 
-            nav.topnav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                background: #14142b;
-                width: 220px;
-                height: 100vh;
-                padding: 4rem 1.5rem 1rem;
+            .container {
                 flex-direction: column;
-                gap: 1.5rem;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                box-shadow: -5px 0 15px #6a4fffaa;
-                z-index: 9;
-                border-left: 2px solid #6a4fffaa;
-            }
-
-            nav.topnav.open {
-                transform: translateX(0);
-            }
-
-            nav.topnav a.logout-btn {
-                padding: 1rem;
-                font-size: 1.1rem;
+                height: auto;
+                width: 95%;
+                margin: 20px auto;
                 border-radius: 12px;
             }
 
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 400px) {
-            header h1 {
-                font-size: 1.5rem;
+            .login-section,
+            .info-section {
+                height: auto;
+                padding: 30px 20px;
+                border: none;
+                box-shadow: inset 0 0 15px var(--neon-purple);
             }
 
-            nav.topnav {
-                width: 180px;
-                padding-top: 3.5rem;
-            }
-
-            nav.topnav a.logout-btn {
-                font-size: 1rem;
-                padding: 0.8rem;
+            .info-section {
+                box-shadow: inset 0 0 25px var(--neon-cyan);
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Learning Management System</h1>
-
-        <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false"
-            aria-controls="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+    <div class="container">
+        <div class="login-section">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+            <br>
+            <button class="btn-clear" onclick="logout()">Log out</button>
         </div>
 
-        <nav class="topnav" id="mobile-menu" aria-label="Primary">
-            <a href="gallery.html" class="logout-btn" tabindex="0">Logout</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="grades-grid" aria-label="Grade navigation">
-            <a href="six.html" class="grade-card" tabindex="0">6th Grade</a>
-            <a href="seven.html" class="grade-card" tabindex="0">7th Grade</a>
-            <a href="eight.html" class="grade-card" tabindex="0">8th Grade</a>
-            <a href="nine.html" class="grade-card" tabindex="0">9th Grade</a>
-            <a href="ten.html" class="grade-card" tabindex="0">10th Grade</a>
-            <a href="leven.html" class="grade-card" tabindex="0">11th Grade</a>
-        </section>
-
-        <h2 class="section-title">New Technology Updated</h2>
-
-        <section class="cards-grid" aria-label="Technology updates">
-            <article class="card" tabindex="0">
-                <h3>🧠 Artificial Intelligence (AI)</h3>
-                <h4>OpenAI's GPT-4.5 & GPT-4.1</h4>
-                <p>GPT-4.5 is optimized for chat and coding, supports file uploads and image inputs. GPT-4.1 excels at
-                    coding tasks.</p>
-            </article>
-
-            <article class="card" tabindex="0">
-                <h3>🌐 Sora by OpenAI</h3>
-                <h4>AI Video Generation</h4>
-                <p>Sora can generate and edit videos from text prompts, enhancing creative content generation
-                    capabilities.</p>
-            </article>
-
-            <article class="card" tabindex="0">
-                <h3>🎨 Image Generation Tool</h3>
-                <h4>Custom Image Editing</h4>
-                <p>Use AI to generate or modify images with instructions like style changes, element addition/removal,
-                    and quality enhancements.</p>
-            </article>
-
-            <article class="card" tabindex="0">
-                <h3>🔐 Advanced Security</h3>
-                <h4>Multi-layered Protection</h4>
-                <p>Integrated advanced security measures including authentication, access controls, and data encryption
-                    for user safety.</p>
-            </article>
-
-            <article class="card" tabindex="0">
-                <h3>💾 Cloud Storage Integration</h3>
-                <h4>Firebase & More</h4>
-                <p>Seamless integration with Firebase for real-time database, storage, and hosting to provide smooth
-                    user experience.</p>
-            </article>
-        </section>
-    </main>
-
-    <footer>
-        &copy; 2025 Your LMS. All rights reserved.
-    </footer>
+        <div class="info-section">
+            <h2>Welcome to LMS</h2>
+            <p>Empowering students and educators with a smart, secure, and futuristic learning environment.</p>
+            <div class="tech-cards">
+                <div class="tech-card">
+                    <h3>🔥 Live Updates</h3>
+                    <p>Real-time file access and announcements across your class groups.</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🛡️ Secure Login</h3>
+                    <p>Only authorized users allowed. Fully protected login.</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🚀 Lightning Fast</h3>
+                    <p>Blazing fast load times with seamless LMS dashboard navigation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('.topnav');
+        const validUsers = [
+            { username: "student6", password: "pass6", role: "student" },
+            { username: "student1", password: "pass1", role: "student" },
+            { username: "student2", password: "pass2", role: "student" },
+            { username: "student3", password: "pass3", role: "student" },
+            { username: "student4", password: "pass4", role: "student" },
+            { username: "student5", password: "pass5", role: "student" },
+            { username: "student7", password: "pass7", role: "student" },
+            { username: "student8", password: "pass8", role: "student" },
+            { username: "student9", password: "pass9", role: "student" },
+            { username: "student10", password: "pass10", role: "student" },
+            { username: "student11", password: "pass11", role: "student" },
+        ];
 
-        function toggleMenu() {
-            const isOpen = nav.classList.toggle('open');
-            hamburger.setAttribute('aria-expanded', isOpen);
+        const groups = {
+            six: ["student6", "student1"],
+            seven: ["student7", "student2"],
+            eight: ["student8", "student3"],
+            nine: ["student9", "student4"],
+            ten: ["student10", "student5"],
+            leven: ["student11", "student6"],
+        };
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            const user = validUsers.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                localStorage.setItem("savedUser", JSON.stringify(user));
+                alert("Login successful!");
+
+                let redirectPage = "dashboard.html"; // fallback
+
+                for (const [page, users] of Object.entries(groups)) {
+                    if (users.includes(username)) {
+                        redirectPage = `${page}.html`;
+                        break;
+                    }
+                }
+
+                window.location.href = redirectPage;
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("savedUser");
+            window.location.href = "gallery.html"; // Or login.html
         }
 
-        hamburger.addEventListener('click', toggleMenu);
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleMenu();
-            }
-        });
-
-        // Close menu if clicking outside or resizing
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('open')) {
-                nav.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', false);
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 600 && nav.classList.contains('open')) {
-                nav.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', false);
-            }
+        // Disable right-click on the entire page
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
         });
     </script>
 </body>
