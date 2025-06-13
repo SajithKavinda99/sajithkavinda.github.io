@@ -3,366 +3,380 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learning Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LMS - Neon Dark Theme</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        /* Reset */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html,
         body {
-            overflow-x: hidden;
-            width: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f7fa;
-            color: #2c3e50;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .header {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #5e3693;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .header h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
-
-        .row {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0f1a;
+            color: #cfcfcf;
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px 0;
+            flex-direction: column;
         }
 
-        .side {
-            flex: 1;
-            min-width: 220px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            text-align: center;
+        /* Navbar */
+        header {
+            background: #14142b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px #4b27a6cc;
+            position: relative;
+            z-index: 10;
         }
 
-        #loginPicture {
-            margin-bottom: 20px;
+        header h1 {
+            color: #a27cff;
+            font-weight: 700;
+            font-size: 1.9rem;
+            letter-spacing: 0.05em;
+            user-select: none;
         }
 
-        #loginPicture img {
-            width: 100px;
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        nav.topnav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
             transition: transform 0.3s ease;
         }
 
-        #loginPicture img:hover {
-            transform: scale(1.05);
-        }
-
-        .grade-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            background: #5e3693;
-            color: #f9f9fa;
-            text-decoration: none;
+        nav.topnav a.logout-btn {
+            background: #7a52ff;
+            padding: 0.5rem 1.3rem;
+            border-radius: 25px;
+            color: white;
             font-weight: 600;
-            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 12px #a57fffcc;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        nav.topnav a.logout-btn:hover,
+        nav.topnav a.logout-btn:focus-visible {
+            background: #986aff;
+            outline: none;
+            box-shadow: 0 0 18px #c2aaffcc;
+        }
+
+        /* Hamburger for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            width: 25px;
+        }
+
+        .hamburger span {
+            height: 3px;
+            background: #a27cff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid #a27cff;
+            outline-offset: 4px;
+        }
+
+        /* Grade cards container */
+        main {
+            flex-grow: 1;
+            padding: 2rem 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1.7rem;
+            margin-bottom: 3rem;
+        }
+
+        .grade-card {
+            background: #1a1933;
+            border: 2px solid #6a4fff;
+            border-radius: 15px;
+            padding: 1.6rem 1rem;
             text-align: center;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .grade-button:hover {
-            background-color: #d0d8dc;
-            transform: scale(1.03);
-        }
-
-        .main {
-            flex: 3;
-            background-color: #ffffff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            width: 100%;
-        }
-
-        .main h2 {
-            margin-top: 0;
-            color: #16a085;
-        }
-
-        .main h5 {
-            font-weight: normal;
-            color: #7f8c8d;
-        }
-
-        .fakeimg {
-            background-color: #bdc3c7;
-            height: 200px;
-            border-radius: 10px;
-            margin: 15px 0;
+            font-weight: 700;
+            color: #b49aff;
+            font-size: 1.25rem;
+            user-select: none;
+            box-shadow: 0 0 12px #6a4fff44;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 20px;
-            letter-spacing: 1px;
-            font-weight: bold;
-            width: 100%;
+            text-decoration: none;
+            border-width: 2px;
         }
 
-        .footer {
-            padding: 25px;
+        .grade-card:hover,
+        .grade-card:focus-visible {
+            border-color: #d9bfff;
+            box-shadow: 0 0 25px #a186ffcc;
+            transform: translateY(-6px) scale(1.05);
+            outline: none;
+            color: #d9bfff;
+        }
+
+        /* Section title */
+        h2.section-title {
+            color: #9c80ff;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.05em;
+            user-select: none;
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: #201f3a;
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 5px 20px #6a4fff33;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover,
+        .card:focus-visible {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 30px #6a4fffaa;
+            outline: none;
+        }
+
+        .card h3 {
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: #b49aff;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #9982cc;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            flex-grow: 1;
+            color: #ccc;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #14142b;
+            padding: 1rem 0;
             text-align: center;
-            background: #ecf0f1;
-            margin-top: 30px;
-            font-size: 16px;
-            color: #7f8c8d;
+            font-size: 0.85rem;
+            color: #888;
+            box-shadow: inset 0 1px 0 #6a4fff44;
+            user-select: none;
         }
 
-        /* Tablets */
-        @media screen and (max-width: 1024px) {
-            .header h1 {
-                font-size: 42px;
+        /* Responsive */
+
+        @media (max-width: 850px) {
+            main {
+                padding: 1.5rem 1.5rem 3rem;
+                max-width: 100%;
             }
 
-            .main {
-                padding: 20px;
-            }
-
-            .fakeimg {
-                height: 180px;
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             }
         }
 
-        /* Mobile */
-        @media screen and (max-width: 768px) {
-            .row {
+        @media (max-width: 600px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            nav.topnav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                background: #14142b;
+                width: 220px;
+                height: 100vh;
+                padding: 4rem 1.5rem 1rem;
                 flex-direction: column;
-                padding: 10px 0;
+                gap: 1.5rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: -5px 0 15px #6a4fffaa;
+                z-index: 9;
+                border-left: 2px solid #6a4fffaa;
             }
 
-            .header h1 {
-                font-size: 34px;
+            nav.topnav.open {
+                transform: translateX(0);
             }
 
-            .header p {
-                font-size: 16px;
+            nav.topnav a.logout-btn {
+                padding: 1rem;
+                font-size: 1.1rem;
+                border-radius: 12px;
             }
 
-            .side,
-            .main {
-                width: 100%;
-                padding: 15px;
-            }
-
-            #loginPicture img {
-                width: 80px;
-                height: auto;
-            }
-
-            .grade-button {
-                padding: 12px;
-                font-size: 16px;
-            }
-
-            .main h2 {
-                font-size: 22px;
-            }
-
-            .main h5 {
-                font-size: 14px;
-            }
-
-            .fakeimg {
-                height: 150px;
-                font-size: 18px;
+            .hamburger {
+                display: flex;
             }
         }
 
-        @media screen and (max-width: 480px) {
-            .header h1 {
-                font-size: 28px;
+        @media (max-width: 400px) {
+            header h1 {
+                font-size: 1.5rem;
             }
 
-            .grade-button {
-                font-size: 14px;
-                padding: 10px;
+            nav.topnav {
+                width: 180px;
+                padding-top: 3.5rem;
             }
 
-            .main {
-                padding: 15px;
-            }
-
-            .fakeimg {
-                height: 120px;
-                font-size: 16px;
-            }
-
-            .footer {
-                font-size: 14px;
-                padding: 15px;
+            nav.topnav a.logout-btn {
+                font-size: 1rem;
+                padding: 0.8rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Learning Management System</h1>
 
-    <div class="container">
-        <div class="header">
-            <h1>Learning Management System</h1>
-            <p>Information Communication Technology</p>
-            <p style="color: red;">You can not access this site without admin permission..</p>
+        <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false"
+            aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <div class="row">
-            <div class="side">
-                <div id="loginPicture">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Student Icon" />
-                </div>
-                <a style="background-color: rgb(238, 83, 83); color: white;" href="gallery.html"
-                    class="grade-button">Gallery</a>
-                <a href="six.html" class="grade-button">6th Grade</a>
-                <a href="seven.html" class="grade-button">7th Grade</a>
-                <a href="eight.html" class="grade-button">8th Grade</a>
-                <a href="nine.html" class="grade-button">9th Grade</a>
-                <a href="ten.html" class="grade-button">10th Grade</a>
-                <a href="leven.html" class="grade-button">11th Grade</a>
-            </div>
+        <nav class="topnav" id="mobile-menu" aria-label="Primary">
+            <a href="gallery.html" class="logout-btn" tabindex="0">Logout</a>
+        </nav>
+    </header>
 
-            <div class="main">
-                <h2>🧠 ARTIFICIAL INTELLIGENCE (AI)</h2>
-                <h4>OpenAI's GPT-4.5 (ChatGPT) & GPT-4.1 (API-only)</h4>
-                <p>GPT-4.5 (ChatGPT, Pro users): Better reasoning, math, and code-writing. Supports file uploads, image
-                    generation, and memory.</p>
-                <p>GPT-4.1 (API): High performance for developers, better function-calling, used in production apps.</p>
-                <p>Multimodal AI: Handles text, images, code, and documents simultaneously (e.g., ChatGPT with
-                    image/code support).</p><br><br>
+    <main>
+        <section class="grades-grid" aria-label="Grade navigation">
+            <a href="six.html" class="grade-card" tabindex="0">6th Grade</a>
+            <a href="seven.html" class="grade-card" tabindex="0">7th Grade</a>
+            <a href="eight.html" class="grade-card" tabindex="0">8th Grade</a>
+            <a href="nine.html" class="grade-card" tabindex="0">9th Grade</a>
+            <a href="ten.html" class="grade-card" tabindex="0">10th Grade</a>
+            <a href="leven.html" class="grade-card" tabindex="0">11th Grade</a>
+        </section>
 
-                <h2>Sora by OpenAI – AI-Generated Video</h2>
-                <p>Turn text prompts into realistic, cinematic video clips.</p>
-                <p>Used in advertising, education, and gaming previews.</p><br><br>
+        <h2 class="section-title">New Technology Updated</h2>
 
-                <h4>AI Agents</h4>
-                <p>Tools like Auto-GPT, Devin (AI software engineer), and Open Interpreter can perform multi-step tasks
-                    (e.g., build apps, analyze spreadsheets).</p>
-                <p>Enterprise AI agents automate workflows (e.g., Jira tickets, Slack tasks, and email summaries).</p>
-                <br><br>
+        <section class="cards-grid" aria-label="Technology updates">
+            <article class="card" tabindex="0">
+                <h3>🧠 Artificial Intelligence (AI)</h3>
+                <h4>OpenAI's GPT-4.5 & GPT-4.1</h4>
+                <p>GPT-4.5 is optimized for chat and coding, supports file uploads and image inputs. GPT-4.1 excels at
+                    coding tasks.</p>
+            </article>
 
-                <h4>On-Device AI</h4>
-                <p>AI models now run on iPhones (A17 Pro), Google Pixel, and Snapdragon X Elite PCs.</p>
-                <p>Used for real-time transcription, AI photos, personal assistants, and document summarization.</p>
-                <br><br>
+            <article class="card" tabindex="0">
+                <h3>🌐 Sora by OpenAI</h3>
+                <h4>AI Video Generation</h4>
+                <p>Sora can generate and edit videos from text prompts, enhancing creative content generation
+                    capabilities.</p>
+            </article>
 
-                <h2>🌐 WEB DEVELOPMENT & CLOUD</h2>
-                <h4>AI in Web Development</h4>
-                <p>Tools like Vercel AI SDK, ShadCN UI, and LangChain enable building full-stack AI-powered apps.</p>
-                <p>ChatGPT and GitHub Copilot can scaffold React apps, generate components, and query APIs from prompts.
-                </p><br><br>
+            <article class="card" tabindex="0">
+                <h3>🎨 Image Generation Tool</h3>
+                <h4>Custom Image Editing</h4>
+                <p>Use AI to generate or modify images with instructions like style changes, element addition/removal,
+                    and quality enhancements.</p>
+            </article>
 
-                <h4>Edge & Serverless AI</h4>
-                <p>Cloudflare Workers AI, Vercel AI Functions, and AWS Lambda offer near-instant ML inference at the
-                    edge.</p>
-                <p>Makes apps faster and cheaper to deploy globally.</p><br><br>
+            <article class="card" tabindex="0">
+                <h3>🔐 Advanced Security</h3>
+                <h4>Multi-layered Protection</h4>
+                <p>Integrated advanced security measures including authentication, access controls, and data encryption
+                    for user safety.</p>
+            </article>
 
-                <h4>WebAssembly (WASM) & Rust</h4>
-                <p>WASM allows near-native performance in browsers — used in game engines, video editors, and AI model
-                    runtimes.</p>
-                <p>Rust + WASM combo gaining favor for secure, fast apps.</p><br><br>
+            <article class="card" tabindex="0">
+                <h3>💾 Cloud Storage Integration</h3>
+                <h4>Firebase & More</h4>
+                <p>Seamless integration with Firebase for real-time database, storage, and hosting to provide smooth
+                    user experience.</p>
+            </article>
+        </section>
+    </main>
 
-                <h4>Firebase & Supabase</h4>
-                <p>Supabase added realtime analytics, auth with magic links, and Edge Functions.</p>
-                <p>Firebase added AI features, better App Check, and expanded Realtime/Firestore capabilities.</p>
-                <br><br>
+    <footer>
+        &copy; 2025 Your LMS. All rights reserved.
+    </footer>
 
-                <h2>📱 CONSUMER TECH & SMART DEVICES</h2>
-                <h4>Apple Vision Pro & visionOS 2</h4>
-                <p>Mixed-reality headset with eye-tracking and hand gestures.</p>
-                <p>Apps include immersive browsing, productivity dashboards, 3D modeling, and spatial FaceTime.</p>
-                <br><br>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.topnav');
 
-                <h4>AI Smartphones</h4>
-                <p>Google Pixel 9, Samsung Galaxy S25: Local AI features include live translation, document
-                    summarization, and magic image editing.</p>
-                <p>iOS 18 (expected) to include “Apple Intelligence” with local AI features integrated into apps like
-                    Safari, Messages, and Photos.</p><br><br>
+        function toggleMenu() {
+            const isOpen = nav.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        }
 
-                <h2>🛡️ CYBERSECURITY</h2>
-                <h4>Passkeys (passwordless login)</h4>
-                <p>Google, Apple, and Microsoft now support passkeys — login using Face ID, fingerprint, or device PIN.
-                </p>
-                <p>Safer than passwords or OTPs.</p><br><br>
+        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
+        });
 
-                <h4>AI Threat Detection</h4>
-                <p>AI tools now scan system logs, network traffic, and code for vulnerabilities in real-time.</p>
-                <p>Used by cloud platforms and enterprise security solutions.</p><br><br>
+        // Close menu if clicking outside or resizing
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
 
-                <h4>Post-Quantum Cryptography</h4>
-                <p>NIST released quantum-resistant algorithms to secure data against future quantum attacks.</p>
-                <p>Companies are slowly adopting these standards for long-term data protection.</p><br><br>
-
-                <h2>🧱 BLOCKCHAIN & FINTECH</h2>
-                <h4>Real-World Asset Tokenization</h4>
-                <p>Platforms now tokenize real estate, gold, art, and climate credits on-chain.</p>
-                <p>Used by institutions for faster, transparent settlement.</p><br><br>
-
-                <h4>Ethereum Layer 2</h4>
-                <p>Optimism, Arbitrum, and Base have reduced fees and increased throughput for dApps.</p>
-                <p>Coinbase’s Base network is growing fast with NFT and DeFi apps.</p><br><br>
-
-                <h2>🚗 AUTOMOTIVE & ROBOTICS</h2>
-                <h4>Tesla FSD v12</h4>
-                <p>AI-only self-driving (no hardcoded rules), now handling city navigation in beta across North America.
-                </p>
-                <p>Uses neural networks trained end-to-end.</p><br><br>
-
-                <h4>Humanoid Robots</h4>
-                <p>Figure 01, Boston Dynamics Atlas, and Agility’s Digit robots now use LLMs to understand and follow
-                    human instructions.</p>
-                <p>Use cases: warehouse logistics, factory work, elderly care.</p><br><br>
-
-                <h2>⚙️ DEVELOPER TOOLS</h2>
-                <h4>GitHub Copilot Workspace</h4>
-                <p>Full AI-powered IDE in the browser: can write, edit, and debug entire projects from natural language.
-                </p>
-                <p>You describe the feature; Copilot writes the code and walks through logic.</p><br><br>
-
-                <h4>AI UI Builders</h4>
-                <p>Tools like Uizard, Locofy, and Vercel Playground let you build UIs from sketches or text prompts.</p>
-                <p>Combine with Tailwind, React, and Next.js.</p>
-            </div>
-
-        </div>
-
-        <div class="footer">
-            © 2025 My Website. All rights reserved.
-        </div>
-    </div>
-
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 600 && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
+    </script>
 </body>
 
 </html>
