@@ -4,21 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LMS Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet" />
+    <title>LMS Official Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
         :root {
-            --bg-dark: #0b0a1a;
-            --neon-blue: #39f;
-            --neon-pink: #ff2d95;
-            --neon-purple: #9b59b6;
-            --neon-cyan: #00fff7;
-            --input-bg: #1a1830;
-            --input-border: #292647;
-            --text-light: #ddd;
-            --shadow-neon: rgba(57, 63, 252, 0.7);
-            --shadow-pink: rgba(255, 45, 149, 0.7);
+            --bg-dark: #0f111a;
+            --primary: #1abc9c;
+            --accent: #1abc9c;
+            --light-text: #f0f0f0;
+            --dim-text: #b0b0b0;
+            --input-bg: #1e2230;
+            --input-border: #2c2f3f;
             --transition: 0.3s ease;
         }
 
@@ -26,263 +22,132 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
             height: 100vh;
             background: var(--bg-dark);
-            color: var(--text-light);
+            color: var(--light-text);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
         .container {
+            width: 90%;
+            max-width: 1000px;
+            background: #161a25;
+            border-radius: 12px;
             display: flex;
-            flex-direction: row;
-            width: 100vw;
-            max-width: 1200px;
-            height: 100vh;
-            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 40px var(--shadow-neon);
-        }
-
-        .login-section,
-        .info-section {
-            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         }
 
         .login-section {
             flex: 1;
-            background: linear-gradient(135deg, #110f28 0%, #1e1b44 100%);
+            padding: 40px 30px;
+            background: #1c1f2b;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 40px 30px;
-            position: relative;
-            border-right: 3px solid var(--neon-purple);
-            box-shadow: inset 0 0 15px var(--neon-purple);
-        }
-
-        .login-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            box-shadow: 0 0 50px var(--neon-purple);
-            pointer-events: none;
-            opacity: 0.3;
-            animation: pulse 3s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.25;
-                box-shadow: 0 0 30px var(--neon-purple);
-            }
-
-            50% {
-                opacity: 0.5;
-                box-shadow: 0 0 50px var(--neon-purple);
-            }
         }
 
         .login-section h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: var(--neon-pink);
-            text-transform: uppercase;
+            font-size: 2rem;
             margin-bottom: 30px;
-            text-shadow: 0 0 10px var(--neon-pink);
+            color: var(--primary);
         }
 
         form {
-            width: 100%;
-            max-width: 350px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            padding-bottom: 20px;
         }
 
         input {
+            padding: 14px 16px;
+            border-radius: 8px;
             background: var(--input-bg);
-            border: 2px solid var(--input-border);
-            border-radius: 12px;
-            padding: 14px 20px;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            outline: none;
+            border: 1px solid var(--input-border);
+            color: var(--light-text);
+            font-size: 1rem;
             transition: var(--transition);
-        }
-
-        input::placeholder {
-            color: #999;
         }
 
         input:focus {
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 10px var(--neon-pink);
+            outline: none;
+            border-color: var(--primary);
         }
 
         button {
-            background: transparent;
-            border: 2px solid var(--neon-pink);
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 1.1rem;
-            color: var(--neon-pink);
-            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: var(--primary);
+            color: white;
             font-weight: 600;
-            text-transform: uppercase;
+            font-size: 1rem;
+            cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 0 8px var(--neon-pink);
         }
 
         button:hover {
-            background: var(--neon-pink);
-            color: #111;
-            box-shadow: 0 0 15px var(--neon-pink);
+            background: #0056b3;
         }
 
-        .btn-clear {
-            border-color: var(--neon-blue);
-            color: var(--neon-blue);
-            box-shadow: 0 0 8px var(--neon-blue);
+        .logout-btn {
+            background: var(--accent);
         }
 
-        .btn-clear:hover {
-            background: var(--neon-blue);
-            color: #111;
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
-
-        .forgot-link {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--neon-cyan);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .forgot-link:hover {
-            color: var(--neon-pink);
-            text-decoration: underline;
+        .logout-btn:hover {
+            background: #0d697c;
         }
 
         .info-section {
-            flex: 1.4;
-            background: linear-gradient(135deg, #1c1b38 0%, #2a2752 100%);
-            padding: 60px 40px;
-            color: var(--neon-cyan);
+            flex: 1;
+            padding: 40px;
+            background: #202436;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
-            border-left: 3px solid var(--neon-cyan);
-            box-shadow: inset 0 0 50px var(--neon-cyan);
         }
 
         .info-section h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px var(--neon-cyan);
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
         }
 
         .info-section p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 40px;
-            color: #a3f0f4;
-            text-shadow: 0 0 5px #00fff7aa;
+            font-size: 1rem;
+            color: var(--dim-text);
+            margin-bottom: 25px;
         }
 
-        .tech-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .tech-card {
-            background: #131225;
-            border-radius: 14px;
-            padding: 20px;
-            box-shadow: 0 0 10px var(--neon-cyan);
-            color: #c6ffff;
-            transition: var(--transition);
-        }
-
-        .tech-card:hover {
-            box-shadow: 0 0 20px var(--neon-pink);
-        }
-
-        .tech-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-pink);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .tech-card p {
+        .feature {
+            background: #252a3f;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: var(--light-text);
             font-size: 0.95rem;
-            color: #b6f5ffcc;
-            line-height: 1.4;
         }
 
-        .info-section::before {
-            content: "";
-            position: absolute;
-            top: -100px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle at center, var(--neon-pink) 15%, transparent 70%);
-            filter: blur(100px);
-            animation: rotate 20s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 900px) {
-            body {
-                align-items: flex-start;
-                overflow-y: auto;
-            }
-
+        @media (max-width: 768px) {
             .container {
                 flex-direction: column;
-                height: auto;
                 width: 95%;
-                margin: 20px auto;
-                border-radius: 12px;
             }
 
-            .login-section,
-            .info-section {
-                height: auto;
-                padding: 30px 20px;
-                border: none;
-                box-shadow: inset 0 0 15px var(--neon-purple);
-            }
-
-            .info-section {
-                box-shadow: inset 0 0 25px var(--neon-cyan);
+            .info-section,
+            .login-section {
+                padding: 25px;
             }
         }
     </style>
@@ -291,32 +156,23 @@
 <body>
     <div class="container">
         <div class="login-section">
-            <h1>Login</h1>
+            <h1>LMS Login</h1>
             <form id="loginForm">
                 <input type="text" id="username" placeholder="Username" required />
                 <input type="password" id="password" placeholder="Password" required />
                 <button type="submit">Login</button>
             </form>
-            <br>
-            <button class="btn-clear" onclick="logout()">Log out</button>
+            <br />
+            <button class="logout-btn" onclick="logout()">Log Out</button>
         </div>
 
         <div class="info-section">
             <h2>Welcome to LMS</h2>
-            <p>Empowering students and educators with a smart, secure, and futuristic learning environment.</p>
-            <div class="tech-cards">
-                <div class="tech-card">
-                    <h3>🔥 Live Updates</h3>
-                    <p>Real-time file access and announcements across your class groups.</p>
-                </div>
-                <div class="tech-card">
-                    <h3>🛡️ Secure Login</h3>
-                    <p>Only authorized users allowed. Fully protected login.</p>
-                </div>
-                <div class="tech-card">
-                    <h3>🚀 Lightning Fast</h3>
-                    <p>Blazing fast load times with seamless LMS dashboard navigation.</p>
-                </div>
+            <p>Smart. Secure. Streamlined for modern education environments.</p>
+            <div class="features">
+                <div class="feature">✔️ Real-time class updates and content</div>
+                <div class="feature">🔒 Authorized student access only</div>
+                <div class="feature">⚡ Fast & responsive user experience</div>
             </div>
         </div>
     </div>
@@ -347,7 +203,6 @@
 
         document.getElementById("loginForm").addEventListener("submit", function (e) {
             e.preventDefault();
-
             const username = document.getElementById("username").value.trim();
             const password = document.getElementById("password").value.trim();
 
@@ -357,15 +212,13 @@
                 localStorage.setItem("savedUser", JSON.stringify(user));
                 alert("Login successful!");
 
-                let redirectPage = "dashboard.html"; // fallback
-
+                let redirectPage = "dashboard.html";
                 for (const [page, users] of Object.entries(groups)) {
                     if (users.includes(username)) {
                         redirectPage = `${page}.html`;
                         break;
                     }
                 }
-
                 window.location.href = redirectPage;
             } else {
                 alert("Invalid username or password.");
@@ -374,10 +227,9 @@
 
         function logout() {
             localStorage.removeItem("savedUser");
-            window.location.href = "gallery.html"; // Or login.html
+            window.location.href = "gallery.html";
         }
 
-        // Disable right-click on the entire page
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         });
