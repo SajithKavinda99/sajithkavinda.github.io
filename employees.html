@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Employees - Card & Edit Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            border: 1px solid #888;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        /* Card layout with 3 boxes per row */
+        .employees-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .employees-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .employees-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .employee-card {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+        }
+
+        .employee-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .employee-card p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .employee-actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+            /* Move both buttons to the right */
+            gap: 10px;
+            /* Space between buttons */
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            color: #fff;
+        }
+
+        .edit-btn {
+            background-color: #4caf50;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+        /* Modal base styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px;
+        }
+
+        .modal-content table {
+            width: 100%;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #888;
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        .modal .save-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .modal .cancel-btn {
+            background-color: #f44336;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registered Employees</h1>
+
+    <div style="text-align:center; margin-bottom:20px;">
+        <a href="register.html" class="btn"
+            style="background-color:#ff6b6b; color:#fff; font-weight:bold; padding:10px 20px; border-radius:8px; text-decoration:none;">
+            Go to Registration
+        </a>
+    </div>
+
+    <input type="text" id="searchInput" placeholder="Search by Employee Name or ID Number">
+    <div class="employees-container" id="employeesContainer"></div>
+
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Employee</h3>
+            <table>
+                <tr>
+                    <td><strong>Emp No:</strong></td>
+                    <td><input type="text" id="editEmpNo"></td>
+                </tr>
+                <tr>
+                    <td><strong>Employee:</strong></td>
+                    <td><input type="text" id="editEmployee"></td>
+                </tr>
+                <tr>
+                    <td><strong>ID Number:</strong></td>
+                    <td><input type="text" id="editIDNumber"></td>
+                </tr>
+                <tr>
+                    <td><strong>Gender:</strong></td>
+                    <td><input type="text" id="editGender"></td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td><input type="email" id="editEmail"></td>
+                </tr>
+                <tr>
+                    <td><strong>Phone:</strong></td>
+                    <td><input type="text" id="editPhone"></td>
+                </tr>
+                <tr>
+                    <td><strong>Branch:</strong></td>
+                    <td><input type="text" id="editBranch"></td>
+                </tr>
+                <tr>
+                    <td><strong>Account No:</strong></td>
+                    <td><input type="text" id="editAccountNo"></td>
+                </tr>
+                <tr>
+                    <td><strong>Beneficiary:</strong></td>
+                    <td><input type="text" id="editBeneficiary"></td>
+                </tr>
+            </table>
+            <div style="margin-top:15px; text-align:right;">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, get, remove, update } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAeDyGcXg92K-RRq11yW6rZ-t4vuAYb7Kc",
+            authDomain: "portfolio-71902.firebaseapp.com",
+            databaseURL: "https://portfolio-71902-default-rtdb.firebaseio.com",
+            projectId: "portfolio-71902",
+            storageBucket: "portfolio-71902.appspot.com",
+            messagingSenderId: "618828442439",
+            appId: "1:618828442439:web:4fb646503ca1e8a938ba62"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const container = document.getElementById('employeesContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        const editModal = document.getElementById('editModal');
+        const editFields = {
+            empNo: document.getElementById('editEmpNo'),
+            employee: document.getElementById('editEmployee'),
+            idNumber: document.getElementById('editIDNumber'),
+            gender: document.getElementById('editGender'),
+            email: document.getElementById('editEmail'),
+            phone: document.getElementById('editPhone'),
+            branch: document.getElementById('editBranch'),
+            accountNumber: document.getElementById('editAccountNo'),
+            beneficiary: document.getElementById('editBeneficiary')
+        };
+        let currentUserId = null;
+
+        async function loadEmployees() {
+            const snapshot = await get(ref(db, 'users/'));
+            container.innerHTML = '';
+            if (snapshot.exists()) {
+                const users = snapshot.val();
+                Object.entries(users).forEach(([id, user]) => {
+                    const card = document.createElement('div');
+                    card.classList.add('employee-card');
+                    card.dataset.name = user.employee.toLowerCase();
+                    card.dataset.id = user.idNumber.toLowerCase();
+
+                    card.innerHTML = `
+                <h3>${user.employee}</h3>
+                <p><strong>Emp No:</strong> ${user.employeeNumber}</p>
+                <p><strong>ID Number:</strong> ${user.idNumber}</p>
+                <p><strong>Gender:</strong> ${user.gender}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Phone:</strong> ${user.phone}</p>
+                <p><strong>Branch:</strong> ${user.branch}</p>
+                <p><strong>Account No:</strong> ${user.accountNumber}</p>
+                <p><strong>Beneficiary:</strong> ${user.beneficiary}</p>
+                <div class="employee-actions">
+                    <button class="action-btn delete-btn">Delete</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                </div>
+            `;
+
+                    card.querySelector('.delete-btn').addEventListener('click', () => {
+                        if (confirm(`Delete ${user.employee}?`)) {
+                            remove(ref(db, `users/${id}`)).then(loadEmployees);
+                        }
+                    });
+
+                    card.querySelector('.edit-btn').addEventListener('click', () => {
+                        currentUserId = id;
+                        editFields.empNo.value = user.employeeNumber || '';
+                        editFields.employee.value = user.employee || '';
+                        editFields.idNumber.value = user.idNumber || '';
+                        editFields.gender.value = user.gender || '';
+                        editFields.email.value = user.email || '';
+                        editFields.phone.value = user.phone || '';
+                        editFields.branch.value = user.branch || '';
+                        editFields.accountNumber.value = user.accountNumber || '';
+                        editFields.beneficiary.value = user.beneficiary || '';
+                        editModal.style.display = 'block';
+                    });
+
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        editModal.querySelector('.save-btn').addEventListener('click', () => {
+            if (!currentUserId) return;
+            update(ref(db, `users/${currentUserId}`), {
+                employeeNumber: editFields.empNo.value,
+                employee: editFields.employee.value,
+                idNumber: editFields.idNumber.value,
+                gender: editFields.gender.value,
+                email: editFields.email.value,
+                phone: editFields.phone.value,
+                branch: editFields.branch.value,
+                accountNumber: editFields.accountNumber.value,
+                beneficiary: editFields.beneficiary.value
+            }).then(() => {
+                editModal.style.display = 'none';
+                loadEmployees();
+            }).catch(err => alert(err));
+        });
+
+        editModal.querySelector('.cancel-btn').addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', e => {
+            if (e.target === editModal) editModal.style.display = 'none';
+        });
+
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            document.querySelectorAll('.employee-card').forEach(card => {
+                const matches = card.dataset.name.includes(filter) || card.dataset.id.includes(filter);
+                card.style.display = matches ? '' : 'none';
+            });
+        });
+
+        loadEmployees();
+    </script>
+</body>
+
+</html>
