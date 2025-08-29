@@ -6,18 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Employees - Card & Edit Modal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #121212;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #fff;
-            font-family: 'Courier New', monospace;
+            font-family: 'Poppins', sans-serif;
             padding: 20px;
         }
 
         h1 {
-            color: #ff6b6b;
+            color: #037931;
             text-align: center;
             margin-bottom: 25px;
+        }
+
+        /* Navbar like registration page */
+        .navbar {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 25px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.85) !important;
+        }
+
+        .navbar-brand {
+            color: #03c14d !important;
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #03c14d !important;
         }
 
         #searchInput {
@@ -26,7 +53,6 @@
             margin-bottom: 25px;
             border-radius: 5px;
             border: 1px solid #888;
-            font-family: 'Courier New', monospace;
             font-size: 0.95rem;
             background-color: #1e1e1e;
             color: #fff;
@@ -39,7 +65,6 @@
             gap: 20px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 992px) {
             .employees-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -60,13 +85,8 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .employee-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
-        }
-
         .employee-card h3 {
-            color: #ff6b6b;
+            color: #037931;
             margin-bottom: 10px;
         }
 
@@ -80,9 +100,7 @@
             margin-top: 15px;
             display: flex;
             justify-content: flex-end;
-            /* Move both buttons to the right */
             gap: 10px;
-            /* Space between buttons */
         }
 
         .action-btn {
@@ -98,8 +116,16 @@
             background-color: #4caf50;
         }
 
+        .edit-btn:hover {
+            color: black;
+        }
+
         .delete-btn {
             background-color: #f44336;
+        }
+
+        .delete-btn:hover {
+            color: black;
         }
 
         /* Modal base styles */
@@ -142,37 +168,74 @@
         .modal .save-btn {
             background-color: #4caf50;
             color: #fff;
+            font-weight: bold;
             padding: 8px 16px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
         }
 
+        .modal .save-btn:hover {
+            color: black;
+        }
+
         .modal .cancel-btn {
             background-color: #f44336;
             color: #fff;
+            font-weight: bold;
             padding: 8px 16px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             margin-left: 10px;
         }
+
+        .modal .cancel-btn:hover {
+            color: black;
+        }
+
+        .reg-btn {
+            background-color: #037931;
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .reg-btn:hover {
+            color: black;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Registered Employees</h1>
 
-    <div style="text-align:center; margin-bottom:20px;">
-        <a href="register.html" class="btn"
-            style="background-color:#ff6b6b; color:#fff; font-weight:bold; padding:10px 20px; border-radius:8px; text-decoration:none;">
-            Go to Registration
-        </a>
-    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BIDHORA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus"></i> Register
+                            Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Registered Employees</h1>
 
     <input type="text" id="searchInput" placeholder="Search by Employee Name or ID Number">
     <div class="employees-container" id="employeesContainer"></div>
-
 
     <!-- Edit Modal -->
     <div id="editModal" class="modal">
@@ -345,6 +408,7 @@
 
         loadEmployees();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

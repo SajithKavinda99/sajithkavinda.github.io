@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Registration</title>
+  <title>Registration - Bidhora</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -14,9 +14,30 @@
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       padding: 20px;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.85) !important;
+    }
+
+    .navbar-brand {
+      color: #03c14d !important;
+      font-weight: 600;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #03c14d !important;
     }
 
     .card {
@@ -25,11 +46,12 @@
       width: 100%;
       max-width: 750px;
       padding: 30px;
+      margin-top: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     h1 {
-      color: #ff6b6b;
+      color: #037931;
       font-weight: 600;
       text-align: center;
       margin-bottom: 25px;
@@ -41,7 +63,7 @@
     }
 
     .nav-tabs .nav-link.active {
-      background: #ff6b6b;
+      background: #037931;
       border-radius: 10px 10px 0 0;
       color: #fff;
     }
@@ -63,43 +85,22 @@
       top: 50%;
       left: 12px;
       transform: translateY(-50%);
-      color: #ff6b6b;
+      color: #037931;
     }
 
-    .form-floating {
-      position: relative;
-    }
-
-    .btn-submit {
-      background: #ff6b6b;
+    .btn-submit,
+    .btn-clear,
+    .btn-next {
+      color: white;
+      background: #037931;
       border: none;
       font-weight: 600;
     }
 
-    .btn-submit:hover {
-      background: #ff3f5c;
-    }
-
-    .btn-clear {
-      background: #333;
-      border: none;
-    }
-
-    .btn-clear:hover {
-      background: #555;
-    }
-
-    .view-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin-top: 20px;
-      background: #ffd700;
-      color: #000;
-      font-weight: bold;
-      padding: 12px;
-      border-radius: 12px;
-      text-decoration: none;
+    .btn-submit:hover,
+    .btn-clear:hover,
+    .btn-next:hover {
+      background: #029a3a;
     }
 
     .position-relative {
@@ -110,6 +111,27 @@
 
 <body>
 
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BIDHORA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="employees.html"><i class="fa-solid fa-users"></i> View Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Registration Card -->
   <div class="card">
     <h1>Employee Registration</h1>
 
@@ -120,8 +142,8 @@
           type="button">Personal Info</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button">Bank
-          Info</button>
+        <button class="nav-link disabled" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button"
+          tabindex="-1">Bank Info</button>
       </li>
     </ul>
 
@@ -132,33 +154,38 @@
           <div class="row g-3 mb-3">
             <div class="col-md-6 position-relative">
               <i class="fa-solid fa-id-badge input-icon"></i>
-              <input type="text" class="form-control" id="employeeNumber" placeholder="Employee Number" required>
+              <input type="text" class="form-control personal" id="employeeNumber" placeholder="Employee Number"
+                required>
             </div>
             <div class="col-md-6 position-relative">
               <i class="fa-solid fa-user input-icon"></i>
-              <input type="text" class="form-control" id="employee" placeholder="Employee Name" required>
+              <input type="text" class="form-control personal" id="employee" placeholder="Employee Name" required>
             </div>
             <div class="col-md-6 position-relative">
-              <i class="fa-solid fa-card-id input-icon"></i>
-              <input type="text" class="form-control" id="idNumber" placeholder="ID Number" required>
+              <i class="fa-solid fa-id-card input-icon"></i>
+              <input type="text" class="form-control personal" id="idNumber" placeholder="ID Number" required>
             </div>
             <div class="col-md-6 position-relative">
               <i class="fa-solid fa-venus-mars input-icon"></i>
-              <select class="form-select" id="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+              <select class="form-select personal" id="gender" required>
+                <option style="color: black;" value="" disabled selected>Select Gender</option>
+                <option style="color: black;" value="Male">Male</option>
+                <option style="color: black;" value="Female">Female</option>
+                <option style="color: black;" value="Other">Other</option>
               </select>
             </div>
             <div class="col-md-6 position-relative">
               <i class="fa-solid fa-envelope input-icon"></i>
-              <input type="email" class="form-control" id="email" placeholder="Email" required>
+              <input type="email" class="form-control personal" id="email" placeholder="Email" required>
             </div>
             <div class="col-md-6 position-relative">
               <i class="fa-solid fa-phone input-icon"></i>
-              <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+              <input type="tel" class="form-control personal" id="phone" placeholder="Phone" required>
             </div>
+          </div>
+          <!-- Next Button -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-next" id="nextBtn">Next</button>
           </div>
         </div>
 
@@ -185,10 +212,6 @@
         </div>
       </div>
     </form>
-
-    <a href="employees.html" class="view-btn">View Registered Employees</a>
-    <a href="login.html" class="view-btn">Log out</a>
-
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -210,6 +233,29 @@
     const db = getDatabase(app);
 
     const form = document.getElementById('registrationForm');
+    const nextBtn = document.getElementById('nextBtn');
+    const bankTab = document.getElementById('bank-tab');
+    const personalTab = document.getElementById('personal-tab');
+
+    // Validate only personal fields
+    nextBtn.addEventListener('click', () => {
+      const personalFields = document.querySelectorAll('.personal');
+      let valid = true;
+      personalFields.forEach(f => {
+        if (!f.checkValidity()) {
+          f.reportValidity();
+          valid = false;
+        }
+      });
+
+      if (valid) {
+        bankTab.classList.remove('disabled');
+        const tab = new bootstrap.Tab(bankTab);
+        tab.show();
+      }
+    });
+
+    // Submit data
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = {
@@ -227,6 +273,11 @@
       await set(newRef, data);
       alert('Employee registered successfully!');
       form.reset();
+
+      // Reset tabs
+      bankTab.classList.add('disabled');
+      const tab = new bootstrap.Tab(personalTab);
+      tab.show();
     });
   </script>
 </body>
